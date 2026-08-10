@@ -36,14 +36,11 @@
       ['grn', 'steve@demo-host:~$'],
     ],
     'start claude': [
-      ['dim', '╭─ Start Claude in “zsh-1” ──╮'],
-      ['dim', '│ Profile: work-enterprise  │'],
-      ['dim', '│ Model:   default          │'],
-      ['dim', '│ [x] Connect MCP           │'],
-      ['dim', '╰───────────────────────────╯'],
-      ['grn', '✳ Welcome to Claude Code — logged in as work-enterprise'],
-      ['amb', 'Claude wants to run: go test ./…   [Allow] [Deny]'],
-      ['dim', 'you hold the gate — reads are free, running asks.'],
+      ['dim', '# in the app: right-click a tab → Start Claude here… → pick a profile'],
+      ['prm', '❯ ( export CLAUDE_CONFIG_DIR=~/.claude-profiles/work-enterprise ; claude )'],
+      ['dim', '── PounceTERM · Claude profile: work-enterprise ──'],
+      ['grn', '✳ Welcome to Claude Code'],
+      ['dim', 'reads are free · typing is free · running asks you first'],
       ['BADGE', 'Claude · work-enterprise'],
     ],
     profiles: [
@@ -171,6 +168,30 @@
       } else if (s.type === 'out') {
         s.lines.forEach(function (l) { outRow(Array.isArray(l) ? l : ['', l]); });
         timer = setTimeout(runStep, REDUCED ? 0 : (s.ms || 420));
+      } else if (s.type === 'dialog') {
+        var dlg = el('div', 'twin-dialog');
+        var box = el('div', 'twin-dialog-box');
+        box.appendChild(el('div', 'twin-dialog-h', '\u2733 Start Claude in \u201czsh-1\u201d'));
+        var rows = [['Profile', s.profile || 'Default'], ['Model', 'default']];
+        rows.forEach(function (r) {
+          var row = el('div', 'twin-dialog-row');
+          row.appendChild(el('span', 'twin-dialog-lbl', r[0]));
+          row.appendChild(el('span', 'twin-dialog-val', r[1] + '  \u2195'));
+          box.appendChild(row);
+        });
+        box.appendChild(el('div', 'twin-dialog-chk', '\u2611 Connect PounceTERM MCP'));
+        var foot = el('div', 'twin-dialog-foot');
+        foot.appendChild(el('span', 'twin-dialog-btn', 'Cancel'));
+        var go = el('span', 'twin-dialog-btn go', '\u2733 Start Claude');
+        foot.appendChild(go);
+        box.appendChild(foot);
+        dlg.appendChild(box);
+        win.style.position = 'relative';
+        win.appendChild(dlg);
+        timer = setTimeout(function () {
+          go.classList.add('press');
+          timer = setTimeout(function () { dlg.remove(); runStep(); }, REDUCED ? 0 : 450);
+        }, REDUCED ? 0 : (s.ms || 2200));
       } else if (s.type === 'pout') {
         s.lines.forEach(function (l) { paneLine(s.pane, l[0], l[1]); });
         timer = setTimeout(runStep, REDUCED ? 0 : (s.ms || 500));
@@ -197,7 +218,7 @@
     function armPlayground() {
       if (input) return;
       inputLn = line(null, '');
-      inputLn.appendChild(el('span', 'prm', 'steve@demo ❯ '));
+      inputLn.appendChild(el('span', 'prm', 'steve@mac ❯ '));
       input = el('input', 'sim-input');
       input.setAttribute('aria-label', 'try a command — type help');
       input.autocapitalize = 'off'; input.autocomplete = 'off'; input.spellcheck = false;
@@ -208,7 +229,7 @@
         if (e.key !== 'Enter') return;
         var cmd = input.value.trim().toLowerCase();
         input.value = '';
-        var echo = el('div', 'ln'); echo.appendChild(el('span', 'prm', 'steve@demo ❯ ')); echo.appendChild(el('span', '', cmd));
+        var echo = el('div', 'ln'); echo.appendChild(el('span', 'prm', 'steve@mac ❯ ')); echo.appendChild(el('span', '', cmd));
         body.insertBefore(echo, inputLn);
         if (!cmd) return;
         if (cmd === 'clear') { body.querySelectorAll('.ln').forEach(function (n) { if (n !== inputLn) n.remove(); }); return; }

@@ -1,48 +1,41 @@
-// The flagship home-page scene: a fix ships while you hold the gate.
+// The flagship home-page scene — faithful to what PounceTERM actually does.
+// A LOCAL tab (profiles are local; the status bar's "local" stays true), the
+// real command Start Claude types, the real profile banner the app prints,
+// and Claude Code's real permission-prompt shape. Narration = shell comments.
 window.PT_HOME_SCENE = {
   title: 'PounceTERM — zsh-1',
   tabs: ['zsh-1'],
   steps: [
-    { type: 'type', text: 'ssh demo-host' },
+    { type: 'out', lines: [['dim', '# right-click this tab → Start Claude here…']], ms: 1100 },
+    { type: 'dialog', profile: 'work-enterprise', ms: 2400 },
     {
       type: 'out', lines: [
-        ['dim', 'connecting to demo-host (100.64.0.7)…'],
-        ['', 'Welcome to demo-host — Ubuntu 24.04 LTS'],
-        ['dim', 'reverse MCP tunnel up: remote 127.0.0.1:7460 → this Mac'],
-      ],
-    },
-    { type: 'wait', ms: 600 },
-    { type: 'out', lines: [['dim', 'right-click the tab → Start Claude here…']], ms: 700 },
-    {
-      type: 'out', lines: [
-        ['dim', '╭─ Start Claude in “zsh-1” ──╮'],
-        ['dim', '│ Profile: work-enterprise  │'],
-        ['dim', '│ Model:   default          │'],
-        ['dim', '│ [x] Connect MCP           │'],
-        ['dim', '╰───────────────────────────╯'],
-      ], ms: 900,
-    },
-    { type: 'tab', name: 'claude-1' },
-    { type: 'badge', text: 'Claude · work-enterprise', on: true },
-    {
-      type: 'out', lines: [
-        ['grn', '✳ Welcome to Claude Code'],
-        ['dim', 'logged in as work-enterprise — your personal profile stays untouched'],
+        ['prm', '❯ ( export CLAUDE_CONFIG_DIR=~/.claude-profiles/work-enterprise ; claude )'],
       ], ms: 700,
     },
+    { type: 'out', lines: [['dim', '── PounceTERM · Claude profile: work-enterprise — if asked to log in, sign in as the account/org THIS profile is for ──']], ms: 700 },
+    { type: 'tab', name: 'claude-1' },
+    { type: 'badge', text: 'Claude · work-enterprise', on: true },
+    { type: 'out', lines: [['grn', '✳ Welcome to Claude Code']], ms: 800 },
     { type: 'type', text: 'fix the flaky retry test and run the suite' },
     {
       type: 'out', lines: [
-        ['dim', '✳ editing internal/retry/backoff_test.go…'],
-        ['amb', 'Claude wants to run: go test ./…        [Allow] [Deny]'],
+        ['dim', '✳ Reading internal/retry/backoff_test.go…'],
+        ['dim', '✳ The jitter bound is off by one at the window edge — editing…'],
       ], ms: 1100,
     },
     {
       type: 'out', lines: [
-        ['dim', 'you hold the gate — reads are free, running asks. Allow ⏎'],
-        ['grn', 'ok  internal/retry  2.41s  (12 tests)'],
-        ['', 'done. tab pinged you because it finished in the background.'],
-      ], ms: 400,
+        ['amb', '  Bash(go test ./internal/retry/…)'],
+        ['amb', '  Do you want to proceed?   ❯ 1. Yes   2. No'],
+      ], ms: 1200,
     },
+    {
+      type: 'out', lines: [
+        ['dim', '# reads and edits were free — running asked first. That gate is yours.'],
+        ['grn', 'ok      demo/app/internal/retry      2.41s'],
+      ], ms: 600,
+    },
+    { type: 'out', lines: [['dim', '# switch away while it runs — the tab notifies you when it finishes.']], ms: 400 },
   ],
 };

@@ -28,9 +28,8 @@ window.PT_SCENES = {
     tabs: ['build-box'],
     steps: [
       { type: 'type', text: 'ssh build-box' },
-      { type: 'out', lines: [['dim', 'connected over Tailscale (100.64.0.7) — reverse MCP tunnel up'], ['grn', 'steve@build-box:~$']], ms: 600 },
-      { type: 'type', text: 'claude' },
-      { type: 'badge', text: 'Claude · remote', on: true },
+      { type: 'out', lines: [['dim', 'connected over Tailscale (100.64.0.7) — reverse MCP tunnel up'], ['grn', 'steve@build-box:~$ claude']], ms: 600 },
+      { type: 'badge', text: 'Claude', on: true },
       { type: 'out', lines: [['grn', '✳ Claude Code on build-box'], ['dim', 'it reaches PounceTERM through the tunnel: 127.0.0.1:7460 → your Mac'], ['amb', 'run_command still gates on THIS tab’s AI-control. Off by default.']], ms: 400 },
     ],
   },

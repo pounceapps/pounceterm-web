@@ -267,3 +267,15 @@ figure.shot-dialog img { box-shadow: 0 22px 70px rgba(0, 0, 0, .55); }
 .lb-x svg { width: 16px; height: 16px; }
 .lb-cap { position: fixed; bottom: 18px; left: 0; right: 0; text-align: center; color: var(--ink-dim); font-size: 13px; pointer-events: none; }
 .lb-cap::before { content: "# "; color: var(--green); }
+
+/* sim: the Start-Claude dialog as a real overlay on the window */
+.twin-dialog { position: absolute; inset: 0; background: rgba(4, 8, 6, .55); display: flex; align-items: center; justify-content: center; z-index: 5; }
+.twin-dialog-box { background: #16211a; border: 1px solid var(--border-hi); border-radius: 10px; padding: 14px 16px; min-width: 250px; box-shadow: 0 18px 60px rgba(0,0,0,.6); font-size: 12.5px; }
+.twin-dialog-h { color: var(--ink); font-weight: 600; margin-bottom: 10px; }
+.twin-dialog-row { display: flex; justify-content: space-between; gap: 18px; padding: 4px 0; color: var(--ink-mute); }
+.twin-dialog-val { background: var(--panel); border: 1px solid var(--border-hi); border-radius: 5px; padding: 1px 8px; color: var(--ink); }
+.twin-dialog-chk { color: var(--ink-dim); padding: 6px 0 2px; }
+.twin-dialog-foot { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+.twin-dialog-btn { border: 1px solid var(--border-hi); border-radius: 6px; padding: 3px 12px; color: var(--ink-dim); }
+.twin-dialog-btn.go { background: #2f81f7; border-color: #2f81f7; color: #fff; transition: transform .12s, filter .12s; }
+.twin-dialog-btn.go.press { transform: scale(.94); filter: brightness(1.25); }
