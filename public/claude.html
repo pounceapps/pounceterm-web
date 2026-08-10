@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude in PounceTERM — profiles, the gate, and remote agents</title>
+<meta name="description" content="How PounceTERM makes Claude Code a first-class terminal citizen: the Start dialog, isolated profiles for multiple orgs, the AI-control gate, the sidebar chat, the remote MCP tunnel, relay, notifications, and Session Stats.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://pounceterm.com/claude">
+<meta property="og:title" content="Claude in PounceTERM">
+<meta property="og:description" content="Start Claude in any tab. Pick an identity. Hold the gate.">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav class="nav"><div class="nav-in">
+  <a class="nav-brand" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg><span><span class="p">Pounce</span><span class="a">TERM</span></span></a>
+  <a class="nav-tab" href="/">home</a>
+  <a class="nav-tab active" href="/claude">claude</a>
+  <a class="nav-tab" href="/use-cases">use cases</a>
+  <a class="nav-tab" href="/terminal">terminal</a>
+  <a class="nav-tab" href="/docs">docs</a>
+  <a class="nav-tab" href="/whatsnew">what's new</a>
+  <a class="nav-tab nav-help" href="/docs">help</a>
+</div></nav>
+
+<main><div class="wrap">
+  <h1>claude --first-class<span class="blink" aria-hidden="true"></span></h1>
+  <p class="sub">Most terminals tolerate agents. PounceTERM was built around them — launching, identifying, gating, watching, and measuring Claude Code is all native.</p>
+
+  <h2 class="prompt-h" id="start">Start Claude anywhere</h2>
+  <p>Right-click any tab → <b>Start Claude here…</b>. The dialog offers the model, a <b>Profile</b> (which identity — see below), continue-last-session, permission bypass for the brave, and one-click MCP connect so the new Claude can drive PounceTERM itself. A live preview shows the exact command before anything runs. On an SSH tab, the command runs on the remote host — where your shell actually is.</p>
+  <p class="doclink">Read the docs → <a href="/docs#start-claude">Starting Claude in a tab</a></p>
+
+  <h2 class="prompt-h" id="profiles">Claude profiles — identities per tab</h2>
+  <p>A profile is an isolated Claude Code home: its own login, <b>organization choice</b>, history, and settings, in its own folder under <code>~/.claude-profiles</code>. One email can belong to a personal plan and several Enterprise orgs — make one profile per org, sign in once each (Claude's login asks "Select organization"), and from then on every tab starts in exactly the identity you picked. Work-Claude and personal-Claude run <b>side by side</b>. PounceTERM never touches credentials or the keychain; it only points Claude at a folder. Rename profiles, reveal them in Finder, and remove them safely — the folder and its login always survive.</p>
+  <p>The status bar reads <code>Claude · work-enterprise</code> while it runs, the tab's right-click menu shows the live identity (verified against the actual process, not a guess), and Restart preselects the same profile.</p>
+  <p class="doclink">Read the docs → <a href="/docs#claude-profiles">Claude profiles: separate accounts and orgs</a></p>
+
+  <h2 class="prompt-h" id="gate">The AI-control gate</h2>
+  <p>The rule that makes agentic work calm: <b>Claude can look, and Claude can type — but running takes your say-so.</b> Reading the screen and scrollback is free. Drafting a command into your input line is allowed — it sits there until <em>you</em> press Enter. Executing needs the per-tab AI-control toggle: off by default, flipped only by a human (it is deliberately not an MCP tool, so an agent can never grant itself execution), and refused entirely on hosts you mark "never allow AI execution". Permission prompts appear as Allow/Deny cards right where you're working.</p>
+  <p class="doclink">Read the docs → <a href="/docs#ai-control">AI control</a> · <a href="/docs#mcp-security">MCP server &amp; security</a></p>
+
+  <h2 class="prompt-h" id="chat">The sidebar chat</h2>
+  <p>⇧⌘J opens a chat that knows what you're looking at — every message carries a snapshot of the focused terminal. Replies render Markdown and Mermaid; gated tools raise their Allow/Deny cards inline; and it runs on a connected Claude Code session <em>or</em> directly on your own API key (OpenAI, Anthropic, Google, Ollama, or a gateway).</p>
+  <p class="doclink">Read the docs → <a href="/docs#chat">The chat panel</a> · <a href="/docs#ai-provider">Bring your own AI</a></p>
+
+  <h2 class="prompt-h" id="tunnel">Remote agents, local tools</h2>
+  <p>A Claude running on your build box can still drive PounceTERM: every SSH session opens an automatic reverse forward, so the remote host's <code>127.0.0.1:7460</code> tunnels back to your Mac. Loopback-bound on both ends, with an opt-in bearer token for shared hosts. Works beautifully over <a href="https://tailscale.com" target="_blank" rel="noopener">Tailscale</a>.</p>
+  <p class="doclink">Read the docs → <a href="/docs#remote-mcp">The SSH tunnel</a> · <a href="/docs#tailscale">Tailscale</a></p>
+
+  <h2 class="prompt-h" id="relay">Claude-to-Claude relay</h2>
+  <p>Two Claude sessions — local or remote — can pass messages through PounceTERM while you watch and moderate every exchange. Agent hand-offs without copy-paste, and without losing the human in the middle.</p>
+  <p class="doclink">Read the docs → <a href="/docs#relay">Claude-to-Claude relay</a></p>
+
+  <h2 class="prompt-h" id="notify">Notifications that mean something</h2>
+  <p>Background tab needs you? You get a real macOS banner the moment a Claude session raises a permission prompt or a question (via Claude Code's own notification hook — not guesswork), and another when it finishes. Mute noisy tabs from their right-click menu.</p>
+  <p class="doclink">Read the docs → <a href="/docs#notifications">Notifications</a></p>
+
+  <h2 class="prompt-h" id="stats">Session Stats</h2>
+  <p>Right-click a tab → <b>Session Stats…</b> for a fresh snapshot: open time, output and typed bytes, the live process tree with memory and CPU, a minute-by-minute chart of the last hour, an hour-of-day activity strip — and a Claude view: running or not, as <b>which profile</b> (read from the live process), plus that profile's own footprint: sessions, projects, disk, startups, last used.</p>
+  <p class="doclink">Read the docs → <a href="/docs#session-stats">Session Stats</a></p>
+
+  <div id="shots-claude"></div>
+
+  <h2 class="prompt-h">Try the whole loop</h2>
+  <p class="sec-sub">The <a href="/use-cases">use cases</a> page plays these features as real workflows — or install and run one for real:</p>
+  <code class="brewline">brew tap <b>pounceapps/tap</b> &amp;&amp; brew install --cask <b>pounceterm</b></code>
+
+</div></main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><b>PounceTERM</b><a href="/claude">Claude integration</a><a href="/use-cases">Use cases</a><a href="/terminal">Terminal features</a><a href="/whatsnew">What's new</a></div>
+    <div><b>Help</b><a href="/docs">Docs — the wiki</a><a href="/docs#start-claude">Starting Claude</a><a href="/docs#claude-profiles">Claude profiles</a><a href="/docs#mcp-security">Security model</a></div>
+    <div><b>Family</b><a href="https://pounceapps.com" target="_blank" rel="noopener">PounceApps</a><a href="https://pouncesql.com" target="_blank" rel="noopener">PounceSQL</a><a href="https://pounceapps.com/pouncepad.html" target="_blank" rel="noopener">PouncePad</a></div>
+    <div><b>Legal</b><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+  </div>
+  <div class="fine">brew install --cask pounceterm — © PounceApps. Native, local, yours.</div>
+</div></footer>
+
+<script src="/copy.js"></script>
+</body>
+</html>

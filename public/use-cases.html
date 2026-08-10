@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use cases — agentic coding workflows in PounceTERM</title>
+<meta name="description" content="Five real workflows, played out: ship a fix while Claude runs tests, two orgs on one email, remote agents over Tailscale, a tiled group of three agents, and SFTP without leaving.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://pounceterm.com/use-cases">
+<meta property="og:title" content="PounceTERM use cases">
+<meta property="og:description" content="Real agentic-coding workflows, simulated live.">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav class="nav"><div class="nav-in">
+  <a class="nav-brand" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg><span><span class="p">Pounce</span><span class="a">TERM</span></span></a>
+  <a class="nav-tab" href="/">home</a>
+  <a class="nav-tab" href="/claude">claude</a>
+  <a class="nav-tab active" href="/use-cases">use cases</a>
+  <a class="nav-tab" href="/terminal">terminal</a>
+  <a class="nav-tab" href="/docs">docs</a>
+  <a class="nav-tab" href="/whatsnew">what's new</a>
+  <a class="nav-tab nav-help" href="/docs">help</a>
+</div></nav>
+
+<main><div class="wrap">
+  <h1>./run use-cases<span class="blink" aria-hidden="true"></span></h1>
+  <p class="sub">Five workflows we actually run, played out in the simulator. Every scene autoplays as you reach it — replay any of them from the window controls.</p>
+
+  <div class="case" id="fix">
+    <h2 class="prompt-h">Ship a fix while Claude runs the tests</h2>
+    <p>Point Claude at a flaky test. It reads for free, edits in front of you, and the moment it wants to <em>run</em> anything, the Allow/Deny card is yours. Switch tabs while the suite runs — the finish notification finds you.</p>
+    <div data-scene="fix"></div>
+    <ul class="case-points">
+      <li>Reads free, runs gated — <a href="/docs#ai-control">AI control</a></li>
+      <li>Background finish pings you — <a href="/docs#notifications">notifications</a></li>
+    </ul>
+  </div>
+
+  <div class="case" id="orgs">
+    <h2 class="prompt-h">Two orgs, one email, zero relogging</h2>
+    <p>Your account belongs to an Enterprise org and a personal plan. Make one profile for each, sign in once per profile, and run them in different tabs at the same time — the status bar always says which identity a tab is using.</p>
+    <div data-scene="orgs"></div>
+    <ul class="case-points">
+      <li>Isolated logins per tab — <a href="/docs#claude-profiles">Claude profiles</a></li>
+      <li>Works for any number of orgs, clients, or plans</li>
+    </ul>
+  </div>
+
+  <div class="case" id="remote">
+    <h2 class="prompt-h">Drive a remote box over Tailscale</h2>
+    <p>SSH to the build machine (MagicDNS or 100.x address), start Claude <em>there</em>, and it still reaches PounceTERM's tools through the automatic reverse tunnel — while execution stays gated by that tab's AI-control.</p>
+    <div data-scene="remote"></div>
+    <ul class="case-points">
+      <li>Automatic reverse forward — <a href="/docs#remote-mcp">the SSH tunnel</a></li>
+      <li>Tailscale-SSH check logins handled in-app — <a href="/docs#tailscale">Tailscale</a></li>
+    </ul>
+  </div>
+
+  <div class="case" id="fleet">
+    <h2 class="prompt-h">Babysit three agents in one group</h2>
+    <p>Put api, frontend, and infra in a color group and tile it. Agents work in parallel; the one that needs a human raises a banner; Session Stats tells you who's been busiest and as which profile.</p>
+    <div data-scene="fleet"></div>
+    <ul class="case-points">
+      <li>Groups, tiling, broadcast — <a href="/docs#tab-groups">tab groups</a></li>
+      <li>Per-tab measurement — <a href="/docs#session-stats">Session Stats</a></li>
+    </ul>
+  </div>
+
+  <div class="case" id="files">
+    <h2 class="prompt-h">Move files without leaving</h2>
+    <p>Open SFTP on the same host — same SSH connection, no second login. Drag folders between panes, watch the queue, and Quick-Look anything from text to streamed video before you pull it down.</p>
+    <div data-scene="files"></div>
+    <ul class="case-points">
+      <li>Dual-pane browser + viewer — <a href="/docs#sftp">SFTP</a></li>
+    </ul>
+  </div>
+
+  <h2 class="prompt-h">Your turn</h2>
+  <code class="brewline">brew tap <b>pounceapps/tap</b> &amp;&amp; brew install --cask <b>pounceterm</b></code>
+
+</div></main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><b>PounceTERM</b><a href="/claude">Claude integration</a><a href="/use-cases">Use cases</a><a href="/terminal">Terminal features</a><a href="/whatsnew">What's new</a></div>
+    <div><b>Help</b><a href="/docs">Docs — the wiki</a><a href="/docs#start-claude">Starting Claude</a><a href="/docs#claude-profiles">Claude profiles</a><a href="/docs#mcp-security">Security model</a></div>
+    <div><b>Family</b><a href="https://pounceapps.com" target="_blank" rel="noopener">PounceApps</a><a href="https://pouncesql.com" target="_blank" rel="noopener">PounceSQL</a><a href="https://pounceapps.com/pouncepad.html" target="_blank" rel="noopener">PouncePad</a></div>
+    <div><b>Legal</b><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+  </div>
+  <div class="fine">brew install --cask pounceterm — © PounceApps. Native, local, yours.</div>
+</div></footer>
+
+<script src="/scenes/usecases.js"></script>
+<script src="/sim.js"></script>
+<script src="/copy.js"></script>
+<script>
+  document.querySelectorAll('[data-scene]').forEach(function (el) {
+    PounceSim.mountWhenVisible(el, { scene: window.PT_SCENES[el.getAttribute('data-scene')], playground: false });
+  });
+</script>
+</body>
+</html>

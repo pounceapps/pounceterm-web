@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What's New — PounceTERM</title>
+<meta name="description" content="Every PounceTERM release, newest first — mirrored from the changelog that ships inside the app.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://pounceterm.com/whatsnew">
+<meta property="og:title" content="What's New — PounceTERM">
+<meta property="og:description" content="Every release, newest first.">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav class="nav"><div class="nav-in">
+  <a class="nav-brand" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg><span><span class="p">Pounce</span><span class="a">TERM</span></span></a>
+  <a class="nav-tab" href="/">home</a>
+  <a class="nav-tab" href="/claude">claude</a>
+  <a class="nav-tab" href="/use-cases">use cases</a>
+  <a class="nav-tab" href="/terminal">terminal</a>
+  <a class="nav-tab" href="/docs">docs</a>
+  <a class="nav-tab active" href="/whatsnew">what's new</a>
+  <a class="nav-tab nav-help" href="/docs">help</a>
+</div></nav>
+
+<main><div class="wrap">
+  <h1>git log --releases<span class="blink" aria-hidden="true"></span></h1>
+  <p class="sub">Every release, newest first — the same changelog the app shows on launch. Update any time with <code>brew upgrade --cask pounceterm</code>.</p>
+  <div style="margin-top:12px">
+    <!-- GEN:releases -->
+<section class="wn wn-latest" id="v0-7-5">
+<h2>v0.7.5<span class="d">2026-08-10</span><span class="wn-badge">LATEST</span></h2>
+<ul><li>Session Stats. Right-click any tab → &quot;Session Stats…&quot; for a fresh snapshot of that terminal: how long it's been open, output and typed bytes, the live process tree with memory and CPU, a minute-by-minute chart of the last hour's output, an hour-of-day activity strip, and a Claude tab showing whether Claude is running, as which profile, and that profile's own footprint — sessions, projects, disk, startups, last used.</li><li>Profiles, rounded out. Rename any profile (the folder and its login never move) and open its folder with Show in Finder. The tab's right-click menu now shows which profile a running Claude is using — read from the live process, so it's right even if you restarted claude by hand — and Restart Claude preselects that same profile. The status bar reads &quot;Claude · profile&quot; at a glance.</li><li>Same email, multiple organizations — explained. The Claude Profiles page now has its own How-it-works guide, including one account that belongs to several orgs (a personal plan plus Enterprise orgs, all on the same email): one profile per org, same email in each, and Claude's &quot;Select organization&quot; pick is what each profile remembers.</li></ul>
+</section>
+<section class="wn" id="v0-7-4">
+<h2>v0.7.4<span class="d">2026-08-08</span></h2>
+<ul><li>Claude profiles. If you use Claude Code with more than one identity — a work account with several organizations, plus a personal one — you can now pick which identity a tab uses when you start Claude. Each profile keeps its own login, org choice, and history in its own folder (~/.claude-profiles), so work-Claude and personal-Claude can even run side by side in different tabs. Set them up in Settings → Claude Profiles; a new profile simply asks you to log in the first time it starts. PounceTERM never touches your credentials — it only points Claude at the profile's folder.</li><li>Terminals start clean. New tabs no longer inherit Claude Code session markers from however PounceTERM itself was launched, so a claude started in a tab is always a full session — transcript saving on, never mistaken for a nested child session.</li></ul>
+</section>
+<section class="wn" id="v0-7-3">
+<h2>v0.7.3<span class="d">2026-08-05</span></h2>
+<ul><li>Sync your setup through 1Password. Push this Mac's AI keys, theme, and fonts into a 1Password vault you choose, then pull them onto another Mac — you pick exactly which items to apply, secrets stay encrypted in 1Password, and nothing changes locally until you confirm. Settings → Sync, with a &quot;Last synced&quot; line and a gentle amber reminder when a machine falls behind.</li><li>Settings that just apply. Every toggle, theme, and font change now saves the moment you make it — no more guessing whether you needed to hit Save. The footer is a single Done button. Credential forms (AI keys) keep their own explicit Save so a half-typed key never sticks.</li><li>Terminals start at home. New local terminals (and file dialogs) open in your home folder — or any Default folder you pick in Preferences — instead of the filesystem root.</li><li>Polish: the settings gear that peeked out of the window's left edge is gone (a CSS cascade bug), and the status-bar wordmark shows the version in PounceTERM green.</li></ul>
+</section>
+<section class="wn" id="v0-7-0">
+<h2>v0.7.0<span class="d">2026-08-02</span></h2>
+<ul><li>Settings, redesigned to match the family. One full-screen page with section tabs down the side (Themes, Fonts, Hosts, Keychain, AI Provider, MCP Server, Logs, Preferences, …), theme preview cards you can see before you pick, and a clear way out on every screen. “AI” is now “AI Provider” and “Claude” is “MCP Server”, so the same thing is called the same thing across PounceTERM, PounceSQL, and PouncePad.</li><li>Notifications that actually mean something. You get a banner the moment a Claude session in a background tab NEEDS YOU — an approval prompt or a question — detected through Claude Code's own notification hook, not guesswork. You still get one when Claude finishes, and the blue dot still marks any output. Mute a noisy terminal from its right-click menu.</li><li>One AI setup for the whole family. The AI Provider screen imports your providers and keys from PounceSQL or PouncePad — set your keys up once and use them everywhere. Keys are decrypted and re-encrypted locally; they never leave your Mac.</li><li>The chat remembers the conversation. It now tracks context across turns, and you can switch providers or models mid-chat from the header without it losing the thread.</li><li>A green TERM. The wordmark is green now, so PounceTERM is recognizable at a glance next to its siblings.</li></ul>
+</section>
+<section class="wn" id="v0-6-0">
+<h2>v0.6.0<span class="d">2026-08-02</span></h2>
+<ul><li>Bring your own AI. A new Settings → AI screen connects OpenAI, Anthropic (Claude), Google (Gemini), Ollama, a custom endpoint, or an API gateway — each with its own model, endpoint, and key. Keys are encrypted at rest in the same Keychain-backed vault as your hosts, and Test Connection checks each one before you save.</li><li>The chat runs on your provider — directly. When a provider is configured, the sidebar chat (⇧⌘J) talks to it over its own API with streaming replies, and keeps the same terminal powers: it can read the screen you're on, list and switch sessions, and run commands where you've turned AI-control on (never on its own). No connected Claude Code session required — though that still works when no provider is set.</li><li>Import from PounceSQL. One button on the AI screen copies your provider setup and keys over from PounceSQL, so the family shares one AI configuration.</li></ul>
+</section>
+<section class="wn" id="v0-5-0">
+<h2>v0.5.0<span class="d">2026-08-01</span></h2>
+<ul><li>Find in a terminal (⌘F). Search the scrollback with a floating find bar — return / ⇧return step through matches (highlighted, with an “n of m” counter), esc closes. It follows the terminal you're in.</li><li>Broadcast to a group. Right-click a group's dot (2+ terminals) → “Broadcast input to group”, and what you type in any of them goes to all of them — one command across a fleet of hosts. A confirm arms it, an amber banner + outline stay up while it's live so it's never a surprise, Stop ends it, and it auto-disarms if the group drops below two.</li><li>Get pinged when you're away. PounceTERM notifies you (with a sound) when a background terminal finishes — a Claude session goes idle waiting for you, or a command settles — in a tab you're not looking at. At most once until you look back, so a chatty log won't spam. Turn it off in Settings → Preferences → General.</li></ul>
+</section>
+<section class="wn" id="v0-4-0">
+<h2>v0.4.0<span class="d">2026-07-27</span></h2>
+<ul><li>Redesigned tabs. Rounded pill tabs on their own row beneath a cleaner title bar. The active tab is marked by a neutral fill — its color is reserved for groups, so an active tab is never mistaken for one — and each tab keeps a slim spine in its host's color.</li><li>Tab groups (optional). Right-click a tab and pick a color to group it. Same-color tabs collapse into a single dot; open a dot to see its terminals — one group open at a time (accordion), with collapsed dots on the left and the open group on the right. Everything you don't group gathers in an &quot;Other&quot; bucket, so it's always clear which terminals are in a group and which aren't. A collapsed dot shows an activity pip when a hidden terminal has output waiting or a Claude reply. Right-click a dot to name the group. A colored group holds up to 5 terminals; Other is unlimited. Choose the look — underline, fill, left bar, or dot-only — in Settings → Preferences → Tab groups. The whole feature stays invisible until you use it.</li><li>Settings, reorganized. Appearance / Tab groups / General tabs, each with a live example under every control — preview the theme colors, font, sizes, and the exact group style before you commit.</li><li>Faster, safer quit. Quitting is instant now (no more 10–15s spinner), and if you have terminals open PounceTERM asks before closing — because a Claude or long task is often running in one. Turn the prompt off in Settings → Preferences → General.</li></ul>
+</section>
+<section class="wn" id="v0-3-1">
+<h2>v0.3.1<span class="d">2026-07-21</span></h2>
+<ul><li>Fixed: dragging an image (or any file) onto the window no longer takes over the app — the dropped file could replace the whole UI. Dropping still types the path into a terminal and uploads into an SFTP tab.</li></ul>
+</section>
+<section class="wn" id="v0-3-0">
+<h2>v0.3.0<span class="d">2026-07-20</span></h2>
+<ul><li>Built-in SFTP. Open a dual-pane file browser to any host from the + screen (or “Open SFTP here” from a terminal, which drops you in the same folder). Drag files between local and remote — whole folders transfer recursively — with a live progress queue and a transfer indicator in the title bar so you can keep working in other tabs. It rides your existing SSH connection (no second login) and remote clipboard reads stay blocked.</li><li>Preview files without downloading: double-click a file (or press Space) for a Quick Look-style viewer — text, code, Markdown (rendered), images, and video / audio / PDF — and use ↑/↓ to flip through the folder, just like on the Mac. Media streams over the connection (with seeking), so even a multi-hundred-MB video plays without downloading it first.</li></ul>
+</section>
+<section class="wn" id="v0-2-3">
+<h2>v0.2.3<span class="d">2026-07-19</span></h2>
+<ul><li>Copy from a remote program now works. When something on a remote host copies via OSC 52 — a Claude Code login URL, a tmux or vim yank — it lands straight in your Mac clipboard. Works over plain SSH with zero config, and through tmux when its set-clipboard is on/external (the default). Remote clipboard reads are refused, so a host can never read your Mac clipboard.</li><li>URLs are clickable. ⌘-click any URL in the terminal to open it in your browser — so a Claude auth URL opens in Safari without copying at all, even through tmux.</li></ul>
+</section>
+<section class="wn" id="v0-2-2">
+<h2>v0.2.2<span class="d">2026-07-16</span></h2>
+<ul><li>Drag &amp; drop files into a terminal: drop one or more files from Finder onto a tab and their shell-escaped paths are typed in at the cursor (space-separated, paths with spaces quoted) — no Enter, just like Terminal.app.</li></ul>
+</section>
+<section class="wn" id="v0-2-1">
+<h2>v0.2.1<span class="d">2026-07-15</span></h2>
+<ul><li>Chat that actually works. The sidebar Claude now reliably reads the terminal you’re looking at, runs read-only commands, and answers with the real output — ask “what’s in this folder?”, “is my repo clean?”, “which file is biggest?” and it just does it (chaining several commands when needed). Validated end-to-end.</li><li>Why it was flaky before, now fixed: the local MCP bearer token is now OPT-IN (off by default — 127.0.0.1 is the boundary), so the chat’s control tools connect every time; upgrading installs are migrated to token-off once, and you can re-enable it any time in Settings → Preferences → Security (handy for shared remote hosts). Running a command also feeds its output straight back so the answer isn’t dropped, and the chat backend starts on its own instead of waiting on a hidden prompt.</li><li>Terminal-aware by design: every chat message carries a snapshot of the focused terminal frozen at send-time, plus that terminal’s stable id — so even if you open ten more tabs before it answers, it still knows exactly what you asked about, and addresses terminals by id (a rename never breaks anything).</li><li>DNS-style, always-unique tab names: zsh-1, claude-1, claude-chat; hosts keep their name then disambiguate (emprise, emprise-1). Names are just labels — identity is the id + a stable chat flag, so the chat tab is detected no matter how it started, and any tab is free to rename.</li><li>Fixed: a second profile instance no longer hangs on launch (the MCP host allow-list is port-aware now).</li></ul>
+</section>
+<section class="wn" id="v0-1-32">
+<h2>v0.1.32<span class="d">2026-07-14</span></h2>
+<ul><li>Profiles: run isolated instances side by side — `--profile &lt;name&gt;` (or POUNCETERM_PROFILE) gives each its own encrypted vault and a free port (the default profile stays on 7460). Handy for a work vs personal vault, or a scratch instance.</li><li>Chat sessions are named “Claude N” so you can see how many are running and which tabs drive them; the Claude tab icon now shows Claude’s coral.</li><li>Fixed: the chat no longer shows “live” — or spins on “Claude is working…” — when no chat Claude is actually connected. Only a real chat session keeps the channel alive.</li></ul>
+</section>
+<section class="wn" id="v0-1-30">
+<h2>v0.1.30<span class="d">2026-07-14</span></h2>
+<ul><li>Tailscale: connect by Tailscale IP or MagicDNS. Tailscale-SSH “check” hosts get a one-click browser login right in the app, and the SSH handshake is bounded so an offline peer fails fast instead of hanging forever.</li><li>Chat panel: ask Claude in a sidebar that acts on the terminal you’re working in — pushed over Claude Code’s channel (no tokens burned while idle), with Markdown &amp; Mermaid rendering, Allow/Deny cards, and a per-tool permission checklist.</li><li>Security: the MCP server now requires a bearer token by default, so the SSH reverse-forward can’t be used by other logged-in users on a shared remote host.</li><li>Pinned hosts: star the boxes you live in — they sit above your recent connections on the launch screen.</li><li>Host editor is now tabbed (Connection / Details / Claude); Known Hosts can “Add as host”; right-click a host to edit it.</li><li>Terminal: bracketed paste (no more auto-indent cascades in vim); connect errors are now persistent and selectable.</li><li>Keep reorganized: a dedicated Claude page (MCP server + chat permissions), a tabbed About, and a richer Credits / tech-stack list.</li></ul>
+</section>
+<section class="wn" id="v0-1-1">
+<h2>v0.1.1<span class="d">2026-07-14</span></h2>
+<ul><li>Fixed: Clear and Delete buttons (connection log, recent connections) now work — they were silently blocked by a webview quirk.</li><li>About page now shows live session and vault stats.</li><li>Clearer MCP / Claude setup with a copy button.</li><li>Terminal copy/paste and all copy buttons use the native clipboard reliably.</li></ul>
+</section>
+<section class="wn" id="v0-1-0">
+<h2>v0.1.0<span class="d">2026-07-13</span></h2>
+<ul><li>Start Claude in any tab — a launch dialog with bypass-permissions, continue, model, and one-click MCP connect (over the SSH tunnel for remote hosts).</li><li>Claude-aware: tabs badge when a Claude Code session is detected, and Claude on a remote box can reach PounceTERM's tools through an automatic SSH reverse tunnel.</li><li>Claude-to-Claude relay — two sessions (local or remote) can talk through PounceTERM while you moderate.</li><li>Per-host AI policy: mark a host 'never allow AI execution' as a safety rail for production boxes.</li><li>Working directory shown in the status bar (via OSC 7), plus the terminal's font picker now lists every monospace font installed on your Mac.</li><li>New themes including Homebrew and six original cat-flavored palettes.</li></ul>
+</section>
+<section class="wn" id="v0-0-1">
+<h2>v0.0.1<span class="d">2026-07-13</span></h2>
+<ul><li>First skeleton of PounceTERM — a terminal manager for the pounceapps.com family.</li><li>Local terminals and SSH connections in tabs, with an encrypted host vault (agent / key / password auth, TOFU host-key approval).</li><li>Pounces (quick commands), command history, and an unlimited connection log.</li><li>MCP server on 127.0.0.1:7460 so Claude Code can read your terminals — running commands needs the per-session AI-control toggle.</li></ul>
+</section>
+<!-- /GEN:releases -->
+  </div>
+</div></main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><b>PounceTERM</b><a href="/claude">Claude integration</a><a href="/use-cases">Use cases</a><a href="/terminal">Terminal features</a><a href="/whatsnew">What's new</a></div>
+    <div><b>Help</b><a href="/docs">Docs — the wiki</a><a href="/docs#start-claude">Starting Claude</a><a href="/docs#claude-profiles">Claude profiles</a><a href="/docs#mcp-security">Security model</a></div>
+    <div><b>Family</b><a href="https://pounceapps.com" target="_blank" rel="noopener">PounceApps</a><a href="https://pouncesql.com" target="_blank" rel="noopener">PounceSQL</a><a href="https://pounceapps.com/pouncepad.html" target="_blank" rel="noopener">PouncePad</a></div>
+    <div><b>Legal</b><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+  </div>
+  <div class="fine">brew install --cask pounceterm — © PounceApps. Native, local, yours.</div>
+</div></footer>
+
+<script src="/copy.js"></script>
+</body>
+</html>
