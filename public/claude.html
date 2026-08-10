@@ -29,51 +29,101 @@
   <p class="sub">Most terminals tolerate agents. PounceTERM was built around them — launching, identifying, gating, watching, and measuring Claude Code is all native.</p>
 
   <h2 class="prompt-h" id="start">Start Claude anywhere</h2>
-  <p>Right-click any tab → <b>Start Claude here…</b>. The dialog offers the model, a <b>Profile</b> (which identity — see below), continue-last-session, permission bypass for the brave, and one-click MCP connect so the new Claude can drive PounceTERM itself. A live preview shows the exact command before anything runs. On an SSH tab, the command runs on the remote host — where your shell actually is.</p>
-  <p class="doclink">Read the docs → <a href="/docs#start-claude">Starting Claude in a tab</a></p>
+  <div class="frow">
+    <div>
+      <p>Right-click any tab → <b>Start Claude here…</b>. The dialog offers the model, a <b>Profile</b> (which identity — see below), continue-last-session, permission bypass for the brave, and one-click MCP connect so the new Claude can drive PounceTERM itself. A live preview shows the exact command before anything runs. On an SSH tab, the command runs on the remote host — where your shell actually is.</p>
+      <p class="doclink">Read the docs → <a href="/docs#start-claude">Starting Claude in a tab</a></p>
+    </div>
+    <figure class="shot"><img src="/shots/start-claude.png" alt="The Start Claude dialog: permissions, MCP connect, chat panel, Profile and Model dropdowns, live command preview" loading="lazy" width="1600" height="1028"><figcaption>the Start dialog — profile, model, live command preview</figcaption></figure>
+  </div>
 
   <h2 class="prompt-h" id="profiles">Claude profiles — identities per tab</h2>
-  <p>A profile is an isolated Claude Code home: its own login, <b>organization choice</b>, history, and settings, in its own folder under <code>~/.claude-profiles</code>. One email can belong to a personal plan and several Enterprise orgs — make one profile per org, sign in once each (Claude's login asks "Select organization"), and from then on every tab starts in exactly the identity you picked. Work-Claude and personal-Claude run <b>side by side</b>. PounceTERM never touches credentials or the keychain; it only points Claude at a folder. Rename profiles, reveal them in Finder, and remove them safely — the folder and its login always survive.</p>
-  <p>The status bar reads <code>Claude · work-enterprise</code> while it runs, the tab's right-click menu shows the live identity (verified against the actual process, not a guess), and Restart preselects the same profile.</p>
-  <p class="doclink">Read the docs → <a href="/docs#claude-profiles">Claude profiles: separate accounts and orgs</a></p>
+  <div class="frow rev">
+    <div>
+      <p>A profile is an isolated Claude Code home: its own login, <b>organization choice</b>, history, and settings, in its own folder under <code>~/.claude-profiles</code>. One email can belong to a personal plan and several Enterprise orgs — make one profile per org, sign in once each, and every tab starts in exactly the identity you picked. Work-Claude and personal-Claude run <b>side by side</b>.</p>
+      <p>PounceTERM never touches credentials or the keychain; it only points Claude at a folder. The status bar reads <code>Claude · work-enterprise</code> while it runs, and the tab's right-click menu shows the live identity — verified against the actual process, not a guess.</p>
+      <p class="doclink">Read the docs → <a href="/docs#claude-profiles">Claude profiles: separate accounts and orgs</a></p>
+    </div>
+    <figure class="shot"><img src="/shots/profiles.png" alt="Settings → Claude Profiles with its How-it-works guide: set-up steps, same email multiple organizations, good to know" loading="lazy" width="1600" height="1028"><figcaption>Settings → Claude Profiles — the guide ships in the app too</figcaption></figure>
+  </div>
+  <div data-scene="orgs" style="margin-top:14px"></div>
+  <p class="doclink" style="margin-top:8px">▲ watch it: two orgs, one email, running side by side</p>
 
   <h2 class="prompt-h" id="gate">The AI-control gate</h2>
-  <p>The rule that makes agentic work calm: <b>Claude can look, and Claude can type — but running takes your say-so.</b> Reading the screen and scrollback is free. Drafting a command into your input line is allowed — it sits there until <em>you</em> press Enter. Executing needs the per-tab AI-control toggle: off by default, flipped only by a human (it is deliberately not an MCP tool, so an agent can never grant itself execution), and refused entirely on hosts you mark "never allow AI execution". Permission prompts appear as Allow/Deny cards right where you're working.</p>
-  <p class="doclink">Read the docs → <a href="/docs#ai-control">AI control</a> · <a href="/docs#mcp-security">MCP server &amp; security</a></p>
+  <div class="frow">
+    <div>
+      <p>The rule that makes agentic work calm: <b>Claude can look, and Claude can type — but running takes your say-so.</b> Reading the screen and scrollback is free. Drafting a command into your input line is allowed — it sits there until <em>you</em> press Enter. Executing needs the per-tab AI-control toggle: off by default, flipped only by a human (it is deliberately not an MCP tool, so an agent can never grant itself execution), and refused entirely on hosts you mark "never allow AI execution".</p>
+      <p class="doclink">Read the docs → <a href="/docs#ai-control">AI control</a> · <a href="/docs#mcp-security">MCP server &amp; security</a></p>
+    </div>
+    <div data-scene="gate"></div>
+  </div>
 
   <h2 class="prompt-h" id="chat">The sidebar chat</h2>
-  <p>⇧⌘J opens a chat that knows what you're looking at — every message carries a snapshot of the focused terminal. Replies render Markdown and Mermaid; gated tools raise their Allow/Deny cards inline; and it runs on a connected Claude Code session <em>or</em> directly on your own API key (OpenAI, Anthropic, Google, Ollama, or a gateway).</p>
-  <p class="doclink">Read the docs → <a href="/docs#chat">The chat panel</a> · <a href="/docs#ai-provider">Bring your own AI</a></p>
+  <div class="frow rev">
+    <div>
+      <p>⇧⌘J opens a chat that knows what you're looking at — every message carries a snapshot of the focused terminal. Replies render Markdown and Mermaid; gated tools raise their Allow/Deny cards inline; and it runs on a connected Claude Code session <em>or</em> directly on your own API key (OpenAI, Anthropic, Google, Ollama, or a gateway).</p>
+      <p class="doclink">Read the docs → <a href="/docs#chat">The chat panel</a> · <a href="/docs#ai-provider">Bring your own AI</a></p>
+    </div>
+    <div data-scene="chat"></div>
+  </div>
 
   <h2 class="prompt-h" id="tunnel">Remote agents, local tools</h2>
-  <p>A Claude running on your build box can still drive PounceTERM: every SSH session opens an automatic reverse forward, so the remote host's <code>127.0.0.1:7460</code> tunnels back to your Mac. Loopback-bound on both ends, with an opt-in bearer token for shared hosts. Works beautifully over <a href="https://tailscale.com" target="_blank" rel="noopener">Tailscale</a>.</p>
-  <p class="doclink">Read the docs → <a href="/docs#remote-mcp">The SSH tunnel</a> · <a href="/docs#tailscale">Tailscale</a></p>
+  <div class="frow">
+    <div>
+      <p>A Claude running on your build box can still drive PounceTERM: every SSH session opens an automatic reverse forward, so the remote host's <code>127.0.0.1:7460</code> tunnels back to your Mac. Loopback-bound on both ends, with an opt-in bearer token for shared hosts. Works beautifully over <a href="https://tailscale.com" target="_blank" rel="noopener">Tailscale</a>.</p>
+      <p class="doclink">Read the docs → <a href="/docs#remote-mcp">The SSH tunnel</a> · <a href="/docs#tailscale">Tailscale</a></p>
+    </div>
+    <svg class="diag" viewBox="0 0 520 210" role="img" aria-label="Diagram: Claude on the remote host reaches PounceTERM on your Mac through an SSH reverse tunnel bound to loopback on both ends">
+      <rect x="10" y="30" width="200" height="150" rx="10" fill="none" stroke="#2c4234"/>
+      <text x="110" y="55" text-anchor="middle" fill="#8fb89c" font-size="13" font-family="ui-monospace,Menlo,monospace">your Mac</text>
+      <rect x="30" y="70" width="160" height="44" rx="6" fill="#131e17" stroke="#34d374"/>
+      <text x="110" y="97" text-anchor="middle" fill="#c9e8d2" font-size="12" font-family="ui-monospace,Menlo,monospace">PounceTERM MCP</text>
+      <text x="110" y="140" text-anchor="middle" fill="#5d7a67" font-size="11" font-family="ui-monospace,Menlo,monospace">127.0.0.1:7460</text>
+      <rect x="310" y="30" width="200" height="150" rx="10" fill="none" stroke="#2c4234"/>
+      <text x="410" y="55" text-anchor="middle" fill="#8fb89c" font-size="13" font-family="ui-monospace,Menlo,monospace">demo-host</text>
+      <rect x="330" y="70" width="160" height="44" rx="6" fill="#131e17" stroke="#7ee787"/>
+      <text x="410" y="97" text-anchor="middle" fill="#c9e8d2" font-size="12" font-family="ui-monospace,Menlo,monospace">claude (remote)</text>
+      <text x="410" y="140" text-anchor="middle" fill="#5d7a67" font-size="11" font-family="ui-monospace,Menlo,monospace">127.0.0.1:7460</text>
+      <path d="M212 92 L308 92" stroke="#34d374" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M308 132 L212 132" stroke="#e8a44c" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ah2)"/>
+      <text x="260" y="82" text-anchor="middle" fill="#8fb89c" font-size="11" font-family="ui-monospace,Menlo,monospace">ssh session</text>
+      <text x="260" y="152" text-anchor="middle" fill="#e8a44c" font-size="11" font-family="ui-monospace,Menlo,monospace">reverse tunnel</text>
+      <defs>
+        <marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#34d374" stroke-width="1.5"/></marker>
+        <marker id="ah2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#e8a44c" stroke-width="1.5"/></marker>
+      </defs>
+    </svg>
+  </div>
 
   <h2 class="prompt-h" id="relay">Claude-to-Claude relay</h2>
-  <p>Two Claude sessions — local or remote — can pass messages through PounceTERM while you watch and moderate every exchange. Agent hand-offs without copy-paste, and without losing the human in the middle.</p>
-  <p class="doclink">Read the docs → <a href="/docs#relay">Claude-to-Claude relay</a></p>
+  <div class="frow rev">
+    <div>
+      <p>Two Claude sessions — local or remote — can pass messages through PounceTERM while you watch and moderate every exchange. Agent hand-offs without copy-paste, and without losing the human in the middle.</p>
+      <p class="doclink">Read the docs → <a href="/docs#relay">Claude-to-Claude relay</a></p>
+    </div>
+    <div data-scene="relay"></div>
+  </div>
 
   <h2 class="prompt-h" id="notify">Notifications that mean something</h2>
-  <p>Background tab needs you? You get a real macOS banner the moment a Claude session raises a permission prompt or a question (via Claude Code's own notification hook — not guesswork), and another when it finishes. Mute noisy tabs from their right-click menu.</p>
-  <p class="doclink">Read the docs → <a href="/docs#notifications">Notifications</a></p>
+  <div class="frow">
+    <div>
+      <p>Background tab needs you? You get a real macOS banner the moment a Claude session raises a permission prompt or a question (via Claude Code's own notification hook — not guesswork), and another when it finishes. Mute noisy tabs from their right-click menu.</p>
+      <p class="doclink">Read the docs → <a href="/docs#notifications">Notifications</a></p>
+    </div>
+    <div class="banner-mock" role="img" aria-label="A macOS notification banner: PounceTERM — claude-1 needs you: approve go test">
+      <div class="bm-card"><span class="bm-ic">&#10022;</span><div><b>PounceTERM</b><br>claude-1 needs you — approve: go test ./…</div></div>
+      <div class="bm-card bm-dim"><span class="bm-ic">&#10003;</span><div><b>PounceTERM</b><br>build-box finished — 0 failures</div></div>
+    </div>
+  </div>
 
   <h2 class="prompt-h" id="stats">Session Stats</h2>
-  <p>Right-click a tab → <b>Session Stats…</b> for a fresh snapshot: open time, output and typed bytes, the live process tree with memory and CPU, a minute-by-minute chart of the last hour, an hour-of-day activity strip — and a Claude view: running or not, as <b>which profile</b> (read from the live process), plus that profile's own footprint: sessions, projects, disk, startups, last used.</p>
-  <p class="doclink">Read the docs → <a href="/docs#session-stats">Session Stats</a></p>
-
-  <h2 class="prompt-h">screencapture — in the app</h2>
-  <figure class="shot">
-    <img src="/shots/profiles.png" alt="Settings → Claude Profiles with its How-it-works guide: set-up steps, same email multiple organizations, good to know" loading="lazy" width="1600" height="1071">
-    <figcaption>Settings → Claude Profiles — the guide ships in the app too</figcaption>
-  </figure>
-  <figure class="shot">
-    <img src="/shots/start-claude.png" alt="The Start Claude dialog: bypass permissions, continue, MCP connect, chat panel, Profile and Model dropdowns, live command preview" loading="lazy" width="1600" height="1071">
-    <figcaption>Start Claude — profile, model, permissions, live command preview</figcaption>
-  </figure>
-  <figure class="shot">
-    <img src="/shots/stats-activity.png" alt="Session Stats Activity tab: output over the last 60 minutes and an hour-of-day strip" loading="lazy" width="1600" height="1071">
-    <figcaption>Session Stats → Activity — a tab, measured</figcaption>
-  </figure>
+  <div class="frow rev">
+    <div>
+      <p>Right-click a tab → <b>Session Stats…</b> for a fresh snapshot: open time, output and typed bytes, the live process tree with memory and CPU, a minute-by-minute chart of the last hour, an hour-of-day activity strip — and a Claude view: running or not, as <b>which profile</b>, plus that profile's own footprint.</p>
+      <p class="doclink">Read the docs → <a href="/docs#session-stats">Session Stats</a></p>
+    </div>
+    <figure class="shot"><img src="/shots/stats-activity.png" alt="Session Stats Activity tab: output over the last 60 minutes and an hour-of-day strip" loading="lazy" width="1600" height="1028"><figcaption>Session Stats → Activity — a tab, measured</figcaption></figure>
+  </div>
 
   <h2 class="prompt-h">Try the whole loop</h2>
   <p class="sec-sub">The <a href="/use-cases">use cases</a> page plays these features as real workflows — or install and run one for real:</p>
@@ -91,6 +141,15 @@
   <div class="fine">brew install --cask pounceterm — © PounceApps. Native, local, yours.</div>
 </div></footer>
 
+<script src="/scenes/claude.js"></script>
+<script src="/scenes/usecases.js"></script>
+<script src="/sim.js"></script>
 <script src="/copy.js"></script>
+<script>
+  var ALL = Object.assign({}, window.PT_CLAUDE_SCENES, window.PT_SCENES);
+  document.querySelectorAll("[data-scene]").forEach(function (el) {
+    PounceSim.mountWhenVisible(el, { scene: ALL[el.getAttribute("data-scene")], playground: false });
+  });
+</script>
 </body>
 </html>
