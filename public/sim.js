@@ -53,8 +53,8 @@
       ['dim', 'one login per profile; run them side by side in different tabs'],
     ],
     themes: [
-      ['grn', 'homebrew   pounce   night-prowl   rider   phosphor'],
-      ['dim', '… plus every monospace font on your Mac'],
+      ['grn', 'homebrew   pounce   night-prowl   retro-terminal   amber'],
+      ['dim', '21 themes — plus every monospace font on your Mac'],
     ],
     stats: [
       ['', 'open 2h 14m · output 1.8 MB · typed 4.2 KB'],
