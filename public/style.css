@@ -208,3 +208,18 @@ footer .fine::before { content: "\276F "; color: var(--green); }
   .twin-body { min-height: 240px; font-size: 12.5px; }
   .nav-brand span span { display: none; } /* brand collapses to icon + TERM */
 }
+
+/* click-to-copy (pairs with copy.js) */
+.copyable { position: relative; cursor: pointer; }
+.brewline.copyable, pre.copyable { padding-right: 78px; }
+.copy-btn {
+  position: absolute; top: 9px; right: 9px; z-index: 3;
+  font: 600 10px var(--mono); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-mute); background: rgba(255, 255, 255, .04);
+  border: 1px solid var(--border-hi); border-radius: 6px;
+  padding: 4px 10px; cursor: pointer; line-height: 1;
+  transition: color .12s, border-color .12s, background .12s;
+}
+.copy-btn:hover { color: var(--green-hi); border-color: var(--green); background: rgba(52, 211, 116, .1); }
+.copy-btn.copied { color: #04140a; background: var(--green); border-color: var(--green); }
+[data-scene] { min-height: 380px; } /* reserve the window's space so scenes below the fold mount reliably and layout never jumps */

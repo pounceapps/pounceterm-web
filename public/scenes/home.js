@@ -15,11 +15,11 @@ window.PT_HOME_SCENE = {
     { type: 'out', lines: [['dim', 'right-click the tab → Start Claude here…']], ms: 700 },
     {
       type: 'out', lines: [
-        ['dim', '╭─ Start Claude in “zsh-1” ─────────────────╮'],
-        ['dim', '│  Profile:  work-enterprise              │'],
-        ['dim', '│  Model:    default                      │'],
-        ['dim', '│  [x] Connect PounceTERM MCP             │'],
-        ['dim', '╰─────────────────────────────────────────╯'],
+        ['dim', '╭─ Start Claude in “zsh-1” ──╮'],
+        ['dim', '│ Profile: work-enterprise  │'],
+        ['dim', '│ Model:   default          │'],
+        ['dim', '│ [x] Connect MCP           │'],
+        ['dim', '╰───────────────────────────╯'],
       ], ms: 900,
     },
     { type: 'tab', name: 'claude-1' },

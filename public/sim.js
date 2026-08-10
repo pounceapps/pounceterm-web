@@ -36,11 +36,11 @@
       ['grn', 'steve@demo-host:~$'],
     ],
     'start claude': [
-      ['dim', '╭─ Start Claude in “zsh-1” ──────────────╮'],
-      ['dim', '│  Profile: work-enterprise            │'],
-      ['dim', '│  Model:   default                    │'],
-      ['dim', '│  [x] Connect PounceTERM MCP          │'],
-      ['dim', '╰──────────────────────────────────────╯'],
+      ['dim', '╭─ Start Claude in “zsh-1” ──╮'],
+      ['dim', '│ Profile: work-enterprise  │'],
+      ['dim', '│ Model:   default          │'],
+      ['dim', '│ [x] Connect MCP           │'],
+      ['dim', '╰───────────────────────────╯'],
       ['grn', '✳ Welcome to Claude Code — logged in as work-enterprise'],
       ['amb', 'Claude wants to run: go test ./…   [Allow] [Deny]'],
       ['dim', 'you hold the gate — reads are free, running asks.'],
@@ -253,7 +253,7 @@
             window.PounceSim.mount(elx, opts);
           }
         });
-      }, { threshold: 0.35 });
+      }, { threshold: 0.2, rootMargin: '200px 0px' });
       io.observe(elx);
     },
   };
