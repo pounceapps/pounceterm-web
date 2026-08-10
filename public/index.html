@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PounceTERM — the macOS terminal built for agentic coding</title>
+<meta name="description" content="A native macOS terminal manager where Claude Code is a first-class citizen: start Claude in any tab (even remote), pick a work or personal profile, and hold a hard gate between suggest and act.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://pounceterm.com/">
+<meta property="og:title" content="PounceTERM — the macOS terminal built for agentic coding">
+<meta property="og:description" content="Start Claude in any tab. You hold the gate. Work and personal profiles, side by side.">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav class="nav"><div class="nav-in">
+  <a class="nav-brand" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg><span><span class="p">Pounce</span><span class="a">TERM</span></span></a>
+  <a class="nav-tab active" href="/">home</a>
+  <a class="nav-tab" href="/claude">claude</a>
+  <a class="nav-tab" href="/use-cases">use cases</a>
+  <a class="nav-tab" href="/terminal">terminal</a>
+  <a class="nav-tab" href="/docs">docs</a>
+  <a class="nav-tab" href="/whatsnew">what's new</a>
+  <a class="nav-tab nav-help" href="/docs">help</a>
+</div></nav>
+
+<main><div class="wrap">
+
+  <h1>The macOS terminal built for <span class="g">agentic coding</span><span class="blink" aria-hidden="true"></span></h1>
+  <p class="sub">Start Claude Code in any tab — even on a remote box. Pick a work or personal identity per tab. And keep one hard rule: <b>reads are free, running asks you first.</b></p>
+
+  <div id="sim-slot" style="margin-top:26px"></div>
+
+  <code class="brewline">brew tap <b>pounceapps/tap</b> &amp;&amp; brew install --cask <b>pounceterm</b></code>
+  <p class="doclink">Native Wails app · notarized by Apple · no subscription, no accounts, no telemetry. Also on <a href="https://github.com/pounceapps/downloads/releases" target="_blank" rel="noopener">GitHub releases</a>.</p>
+
+  <div class="pitch">
+    <div class="t-card">
+      <h3>start claude --anywhere</h3>
+      <p>Right-click any tab → Start Claude. Options for model, permissions, MCP connect — with a live preview of the exact command. On an SSH tab it runs on the remote host, and PounceTERM's tools reach back through an automatic reverse tunnel.</p>
+    </div>
+    <div class="t-card">
+      <h3>you hold the gate</h3>
+      <p>Claude can read the screen and draft commands into your input line. Executing is different: it needs the per-tab <b>AI-control</b> toggle, off by default, that only a human can flip. Permission cards show up right where you're looking.</p>
+    </div>
+    <div class="t-card">
+      <h3>work + personal, side by side</h3>
+      <p>Claude profiles are isolated logins — one email can hold a personal plan and Enterprise orgs, one profile per org. Different tabs run different identities at the same time, and the status bar always says which.</p>
+    </div>
+  </div>
+
+  <h2 class="prompt-h">ls features/</h2>
+  <p class="sec-sub">Everything ships in the box. Every card links to the full story.</p>
+  <div class="t-grid">
+    <a class="t-card" href="/claude#start"><h4>Start Claude anywhere</h4><p>One click, any tab, local or remote — model, profile, permissions, MCP.</p></a>
+    <a class="t-card" href="/claude#profiles"><h4>Claude profiles</h4><p>Separate logins and orgs per tab. Same email, many organizations — no relogging.</p></a>
+    <a class="t-card" href="/claude#gate"><h4>AI-control gate</h4><p>Suggest vs act is a hard, per-tab, human-only switch. Off by default.</p></a>
+    <a class="t-card" href="/claude#chat"><h4>Sidebar chat</h4><p>Ask about the terminal you're looking at; approve tools inline; Markdown &amp; Mermaid.</p></a>
+    <a class="t-card" href="/claude#tunnel"><h4>Remote MCP tunnel</h4><p>Claude on your server reaches PounceTERM through an automatic SSH reverse forward.</p></a>
+    <a class="t-card" href="/claude#stats"><h4>Session Stats</h4><p>Open time, output charts, process tree, and which Claude profile runs where.</p></a>
+    <a class="t-card" href="/terminal#tabs"><h4>Tabs, groups &amp; splits</h4><p>Color groups, tiled layouts, broadcast-to-group. A fleet of agents, organized.</p></a>
+    <a class="t-card" href="/terminal#ssh"><h4>SSH + encrypted vault</h4><p>Hosts, identities, known keys — AES-256-GCM, key in your macOS Keychain.</p></a>
+    <a class="t-card" href="/terminal#sftp"><h4>Built-in SFTP</h4><p>Dual-pane file browser with a Quick-Look-style viewer. Reuses the SSH connection.</p></a>
+    <a class="t-card" href="/terminal#copy"><h4>Copy that just works</h4><p>OSC 52 from tmux/vim/Claude lands in your Mac clipboard. ⌘-click opens links.</p></a>
+    <a class="t-card" href="/terminal#themes"><h4>Themes &amp; every font</h4><p>Phosphor to pastel, plus every monospace font installed on your Mac.</p></a>
+    <a class="t-card" href="/terminal#sync"><h4>1Password sync</h4><p>Push AI keys, theme, and fonts to a vault; pull them on your other Mac.</p></a>
+  </div>
+
+  <h2 class="prompt-h">cat use-cases | head -3</h2>
+  <p class="sec-sub">Real workflows, played out in the simulator — <a href="/use-cases">see all five</a>.</p>
+  <div class="pitch">
+    <a class="t-card" href="/use-cases#fix"><h3>ship a fix while Claude runs the tests</h3><p>You review; it types; running the suite still asks. The tab pings you when it's done.</p></a>
+    <a class="t-card" href="/use-cases#orgs"><h3>two orgs, one email, zero relogging</h3><p>Enterprise Claude on the work repo, personal Claude on the side project — different tabs.</p></a>
+    <a class="t-card" href="/use-cases#fleet"><h3>babysit three agents in one group</h3><p>A tiled color group, notifications when a background agent needs you, stats per tab.</p></a>
+  </div>
+
+  <h2 class="prompt-h">which — works with your stack</h2>
+  <div class="works">
+    <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a>
+    <a href="https://docs.claude.com/en/docs/claude-code" target="_blank" rel="noopener">Claude Code docs</a>
+    <a href="https://1password.com" target="_blank" rel="noopener">1Password</a>
+    <a href="https://developer.1password.com/docs/cli/" target="_blank" rel="noopener">1Password CLI</a>
+    <a href="https://brew.sh" target="_blank" rel="noopener">Homebrew</a>
+    <a href="https://tailscale.com" target="_blank" rel="noopener">Tailscale</a>
+  </div>
+
+  <div id="shots"></div>
+
+</div></main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><b>PounceTERM</b><a href="/claude">Claude integration</a><a href="/use-cases">Use cases</a><a href="/terminal">Terminal features</a><a href="/whatsnew">What's new</a></div>
+    <div><b>Help</b><a href="/docs">Docs — the wiki</a><a href="/docs#start-claude">Starting Claude</a><a href="/docs#claude-profiles">Claude profiles</a><a href="/docs#mcp-security">Security model</a></div>
+    <div><b>Family</b><a href="https://pounceapps.com" target="_blank" rel="noopener">PounceApps</a><a href="https://pouncesql.com" target="_blank" rel="noopener">PounceSQL</a><a href="https://pounceapps.com/pouncepad.html" target="_blank" rel="noopener">PouncePad</a></div>
+    <div><b>Legal</b><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+  </div>
+  <div class="fine">brew install --cask pounceterm — © PounceApps. Native, local, yours.</div>
+</div></footer>
+
+<script src="/scenes/home.js"></script>
+<script src="/sim.js"></script>
+<script src="/copy.js"></script>
+<script>PounceSim.mount('#sim-slot', { scene: window.PT_HOME_SCENE, playground: true });</script>
+</body>
+</html>
