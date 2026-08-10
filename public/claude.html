@@ -29,13 +29,19 @@
   <p class="sub">Most terminals tolerate agents. PounceTERM was built around them — launching, identifying, gating, watching, and measuring Claude Code is all native.</p>
 
   <h2 class="prompt-h" id="start">Start Claude anywhere</h2>
-  <div class="frow">
-    <div>
-      <p>Right-click any tab → <b>Start Claude here…</b>. The dialog offers the model, a <b>Profile</b> (which identity — see below), continue-last-session, permission bypass for the brave, and one-click MCP connect so the new Claude can drive PounceTERM itself. A live preview shows the exact command before anything runs. On an SSH tab, the command runs on the remote host — where your shell actually is.</p>
-      <p class="doclink">Read the docs → <a href="/docs#start-claude">Starting Claude in a tab</a></p>
-    </div>
-    <figure class="shot"><img src="/shots/start-claude.png" alt="The Start Claude dialog: permissions, MCP connect, chat panel, Profile and Model dropdowns, live command preview" loading="lazy" width="1600" height="1028"><figcaption>the Start dialog — profile, model, live command preview</figcaption></figure>
+  <p>Every tab can become a Claude tab. The dialog offers the model, a <b>Profile</b> (which identity — see below), continue-last-session, permission bypass for the brave, and one-click MCP connect so the new Claude can drive PounceTERM itself. A live preview shows the exact command before anything runs. On an SSH tab, the command runs on the remote host — where your shell actually is.</p>
+  <div class="path" role="img" aria-label="How to open it: right-click any tab, choose Start Claude here, and this dialog appears">
+    <span class="path-chip">right-click any tab</span>
+    <span class="path-arrow">──▶</span>
+    <span class="path-chip">Start Claude here…</span>
+    <span class="path-arrow">──▶</span>
+    <span class="path-chip path-hi">this dialog</span>
   </div>
+  <figure class="shot shot-dialog">
+    <img src="/shots/start-dialog.png" data-full="/shots/start-claude.png" alt="The Start Claude dialog up close: bypass permissions, continue last session, Connect PounceTERM MCP, chat panel, Profile and Model dropdowns, and the live command preview" loading="lazy" width="610" height="590">
+    <figcaption>the Start dialog — profile, model, permissions, and the exact command it will run</figcaption>
+  </figure>
+  <p class="doclink">Read the docs → <a href="/docs#start-claude">Starting Claude in a tab</a></p>
 
   <h2 class="prompt-h" id="profiles">Claude profiles — identities per tab</h2>
   <div class="frow rev">
@@ -122,7 +128,7 @@
       <p>Right-click a tab → <b>Session Stats…</b> for a fresh snapshot: open time, output and typed bytes, the live process tree with memory and CPU, a minute-by-minute chart of the last hour, an hour-of-day activity strip — and a Claude view: running or not, as <b>which profile</b>, plus that profile's own footprint.</p>
       <p class="doclink">Read the docs → <a href="/docs#session-stats">Session Stats</a></p>
     </div>
-    <figure class="shot"><img src="/shots/stats-activity.png" alt="Session Stats Activity tab: output over the last 60 minutes and an hour-of-day strip" loading="lazy" width="1600" height="1028"><figcaption>Session Stats → Activity — a tab, measured</figcaption></figure>
+    <figure class="shot shot-dialog"><img src="/shots/stats-dialog.png" data-full="/shots/stats-activity.png" alt="Session Stats Activity tab up close: output over the last 60 minutes and an hour-of-day strip" loading="lazy" width="690" height="575"><figcaption>Session Stats → Activity — a tab, measured</figcaption></figure>
   </div>
 
   <h2 class="prompt-h">Try the whole loop</h2>
@@ -145,6 +151,7 @@
 <script src="/scenes/usecases.js"></script>
 <script src="/sim.js"></script>
 <script src="/copy.js"></script>
+<script src="/lightbox.js"></script>
 <script>
   var ALL = Object.assign({}, window.PT_CLAUDE_SCENES, window.PT_SCENES);
   document.querySelectorAll("[data-scene]").forEach(function (el) {
