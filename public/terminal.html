@@ -28,35 +28,44 @@
   <h1>a real terminal manager first<span class="blink" aria-hidden="true"></span></h1>
   <p class="sub">The agentic features sit on a serious foundation: real PTYs, real SSH, tmux and vim and mouse mode all working — plus the organization to run a lot of them at once.</p>
 
-  <h2 class="prompt-h" id="tabs">Tabs, color groups, tiled splits, broadcast</h2>
+  <div class="sec-grid">
+  <section class="sec-card" id="tabs"><h2 class="prompt-h">Tabs, color groups, tiled splits, broadcast</h2>
   <p>Local shells and SSH side by side, named and colored. Put related terminals in a <b>color group</b>: expand it as tabs, or tile it into fixed split layouts (2–5 panes) that scale with the window. <b>Broadcast</b> types one command into every terminal in a group — armed with a confirm, amber-bannered while live, auto-disarmed when the group shrinks. ⌘F searches the scrollback.</p>
   <p class="doclink">Read the docs → <a href="/docs#tab-groups">Tab groups</a> · <a href="/docs#shortcuts">Keyboard shortcuts</a></p>
 
-  <h2 class="prompt-h" id="ssh">SSH with an encrypted vault</h2>
+  </section>
+  <section class="sec-card" id="ssh"><h2 class="prompt-h">SSH with an encrypted vault</h2>
   <p>Hosts, reusable identities (user + key/agent/password), snippets, and a connection log — AES-256-GCM encrypted at rest, key in your macOS Keychain, imported straight from <code>~/.ssh</code>. First connections show the host-key fingerprint and ask before trusting (TOFU into PounceTERM's own known_hosts). Tailscale hosts connect by IP or MagicDNS, and Tailscale-SSH "check" logins pop the browser approval right in-app.</p>
   <p class="doclink">Read the docs → <a href="/docs#hosts-identities">Hosts &amp; identities</a> · <a href="/docs#host-keys">Host key trust</a> · <a href="/docs#tailscale">Tailscale</a></p>
 
-  <h2 class="prompt-h" id="sftp">Built-in SFTP + a Quick-Look viewer</h2>
+  </section>
+  <section class="sec-card" id="sftp"><h2 class="prompt-h">Built-in SFTP + a Quick-Look viewer</h2>
   <p>A dual-pane file browser on the host's existing SSH connection — no second login. Drag files or whole folders either direction (recursive, queued, with live progress), rename, delete, mkdir. The viewer previews text, Markdown, images, HTML, and streamed video, audio, and PDF; flip through a folder with ↑/↓.</p>
   <p class="doclink">Read the docs → <a href="/docs#sftp">SFTP</a></p>
 
-  <h2 class="prompt-h" id="copy">Copy that just works</h2>
+  </section>
+  <section class="sec-card" id="copy"><h2 class="prompt-h">Copy that just works</h2>
   <p>Remote programs that copy via OSC 52 — a Claude login URL, a tmux or vim yank — land straight in your Mac clipboard, even through tmux. Copy-on-select is on by default, and ⌘-click opens any URL in your browser.</p>
   <p class="doclink">Read the docs → <a href="/docs#copy-remote">Copying &amp; clickable links</a></p>
 
-  <h2 class="prompt-h" id="themes">Themes and every font you own</h2>
+  </section>
+  <section class="sec-card" id="themes"><h2 class="prompt-h">Themes and every font you own</h2>
   <p>Phosphor greens, warm ambers, pastels — plus a font picker that lists <em>every</em> monospace font installed on your Mac, for the terminal and the UI separately. Live preview cards; everything applies the moment you click it.</p>
   <p class="doclink">Read the docs → <a href="/docs#appearance">Themes, fonts, and the side rail</a></p>
 
-  <h2 class="prompt-h" id="sync">Your setup, on every Mac</h2>
+  </section>
+  <section class="sec-card" id="sync"><h2 class="prompt-h">Your setup, on every Mac</h2>
   <p>Settings → Sync pushes your AI keys, theme, and fonts into a <a href="https://1password.com" target="_blank" rel="noopener">1Password</a> vault you choose (via the <a href="https://developer.1password.com/docs/cli/" target="_blank" rel="noopener">1Password CLI</a>); another Mac pulls them out with a masked, pick-what-applies diff. 1Password does the encryption and the syncing — PounceTERM never runs its own cloud.</p>
   <p class="doclink">Read the docs → <a href="/docs#sync-1password">Sync with 1Password</a></p>
 
-  <h2 class="prompt-h" id="notify">Notifications &amp; the quiet details</h2>
+  </section>
+  <section class="sec-card" id="notify"><h2 class="prompt-h">Notifications &amp; the quiet details</h2>
   <p>Background terminals ping you when they finish or when a Claude needs you — at most once until you look back. Confirm-on-quit protects live sessions. New terminals start in your home folder (or a default you pick). The MCP server binds loopback only, with an opt-in bearer token. It's the little things.</p>
   <p class="doclink">Read the docs → <a href="/docs#notifications">Notifications</a> · <a href="/docs#settings">Settings tour</a> · <a href="/docs#mcp-security">Security model</a></p>
 
 
+  </section>
+  </div>
   <h2 class="prompt-h">Install it</h2>
   <code class="brewline">brew tap <b>pounceapps/tap</b> &amp;&amp; brew install --cask <b>pounceterm</b></code>
   <p class="doclink">Native Wails app · notarized · updates via <code>brew upgrade</code> · also on <a href="https://github.com/pounceapps/downloads/releases" target="_blank" rel="noopener">GitHub releases</a>.</p>

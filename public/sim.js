@@ -111,6 +111,28 @@
     var tabNames = (scene && scene.tabs && scene.tabs.slice()) || ['zsh-1'];
     setTabs(tabNames, 0);
 
+    // Tiled mode: scene.tiled = ['api','frontend','infra'] renders the body as
+    // side-by-side panes (the app's tiled color-group look). Steps target a
+    // pane with {type:'pout', pane:'api', lines:[...]}.
+    var panes = {};
+    if (scene && scene.tiled) {
+      tabs.style.display = 'none';
+      body.classList.add('twin-split');
+      scene.tiled.forEach(function (name) {
+        var p = el('div', 'twin-pane');
+        p.appendChild(el('div', 'twin-pane-h', name));
+        var pb = el('div', 'twin-pane-b');
+        p.appendChild(pb);
+        body.appendChild(p);
+        panes[name] = pb;
+      });
+    }
+    function paneLine(pane, cls, text) {
+      var pb = panes[pane];
+      if (!pb) return;
+      pb.appendChild(el('div', 'ln' + (cls ? ' ' + cls : ''), text));
+    }
+
     function line(cls, text) {
       var ln = el('div', 'ln' + (cls ? ' ' + cls : ''), text);
       body.appendChild(ln);
@@ -149,6 +171,9 @@
       } else if (s.type === 'out') {
         s.lines.forEach(function (l) { outRow(Array.isArray(l) ? l : ['', l]); });
         timer = setTimeout(runStep, REDUCED ? 0 : (s.ms || 420));
+      } else if (s.type === 'pout') {
+        s.lines.forEach(function (l) { paneLine(s.pane, l[0], l[1]); });
+        timer = setTimeout(runStep, REDUCED ? 0 : (s.ms || 500));
       } else if (s.type === 'tab') {
         if (tabNames.indexOf(s.name) < 0) tabNames.push(s.name);
         setTabs(tabNames, tabNames.indexOf(s.name));
