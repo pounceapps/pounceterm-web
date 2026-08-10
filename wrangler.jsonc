@@ -1,6 +1,10 @@
 {
   "name": "pounceterm-web",
   "compatibility_date": "2025-09-27",
+  "routes": [
+    { "pattern": "pounceterm.com", "custom_domain": true },
+    { "pattern": "www.pounceterm.com", "custom_domain": true }
+  ],
   "observability": {
     "enabled": true
   },
