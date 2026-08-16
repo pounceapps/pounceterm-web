@@ -29,7 +29,7 @@ const { ARTICLES, renderArticleHtml } = await import(pathToFileURL(join(tmp, 'wi
 // ---- docs fragment ------------------------------------------------------
 // Sidebar groups (every article must appear exactly once — verified below).
 const GROUPS = [
-  ['Claude & agents', ['start-claude', 'claude-profiles', 'ai-control', 'chat', 'session-stats', 'relay', 'notifications']],
+  ['Claude & agents', ['start-claude', 'claude-profiles', 'ai-control', 'chat', 'preview-tab', 'session-stats', 'relay', 'notifications']],
   ['Remote & connections', ['remote-mcp', 'tailscale', 'hosts-identities', 'host-keys', 'sftp', 'copy-remote']],
   ['AI setup', ['ai-provider', 'import-ai', 'mcp-security']],
   ['Settings & sync', ['settings', 'appearance', 'sync-1password']],
