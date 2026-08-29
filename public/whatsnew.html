@@ -29,8 +29,16 @@
   <p class="sub">Every release, newest first — the same changelog the app shows on launch. Update any time with <code>brew upgrade --cask pounceterm</code>.</p>
   <div style="margin-top:12px">
     <!-- GEN:releases -->
-<section class="wn wn-latest" id="v0-7-9">
-<h2>v0.7.9<span class="d">2026-08-15</span><span class="wn-badge">LATEST</span></h2>
+<section class="wn wn-latest" id="v0-7-11">
+<h2>v0.7.11<span class="d">2026-08-29</span><span class="wn-badge">LATEST</span></h2>
+<ul><li>Escape closes dialogs. Any dialog — Start Claude, Session Stats, Settings, a confirm — now closes on Escape, one at a time when several are stacked, and focus lands back in the terminal. Escape still belongs to your terminal whenever no dialog is open, so vim, less, and Claude's own menus are untouched, and the first-run notice still needs a real answer.</li></ul>
+</section>
+<section class="wn" id="v0-7-10">
+<h2>v0.7.10<span class="d">2026-08-29</span></h2>
+<ul><li>Type right after a dialog closes. Closing a dialog used to leave the keyboard pointed at nothing, so after &quot;Start Claude here…&quot; your first keystrokes went nowhere and you had to click the terminal before you could answer Claude's opening question. Every dialog now hands focus back to the terminal (or the search box on the launch screen) as it closes.</li><li>Built on the current toolchain. PounceTERM now builds on Wails 2.15 and Go 1.27 — no behavior change, but the app is back on supported, up-to-date foundations.</li></ul>
+</section>
+<section class="wn" id="v0-7-9">
+<h2>v0.7.9<span class="d">2026-08-15</span></h2>
 <ul><li>A browser for Markdown. Claude writes plans, specs, and reviews as Markdown — now you can read them right beside the terminal that produced them. ⌘-click a file path in any terminal (Claude prints one, you click it), press ⌘O, or let Claude pop it up itself, and a Preview tab renders the document with tables, code, and Mermaid diagrams drawn. A Rendered ⇄ Source toggle gives you the raw text when you want to copy from it.</li><li>The view updates itself. The Preview tab watches the file, so it re-renders the moment anything changes — click &quot;Open in PouncePad&quot;, edit, save, and the rendered view follows along; same when Claude keeps writing while you read. It is strictly read-only: PounceTERM views, PouncePad edits.</li><li>Test builds announce themselves. A build running outside /Applications now shows &quot;DEV&quot; and its compile time in the status bar, so a development build is never mistaken for the released app.</li></ul>
 </section>
 <section class="wn" id="v0-7-8">
