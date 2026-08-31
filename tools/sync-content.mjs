@@ -33,7 +33,7 @@ const GROUPS = [
   ['Remote & connections', ['remote-mcp', 'tailscale', 'hosts-identities', 'host-keys', 'sftp', 'copy-remote']],
   ['AI setup', ['ai-provider', 'import-ai', 'mcp-security']],
   ['Settings & sync', ['settings', 'appearance', 'sync-1password']],
-  ['Reference', ['tab-groups', 'shortcuts']],
+  ['Reference', ['tab-groups', 'history-privacy', 'shortcuts']],
 ];
 const grouped = GROUPS.flatMap(([, ids]) => ids);
 const missing = ARTICLES.filter(a => !grouped.includes(a.id)).map(a => a.id);
