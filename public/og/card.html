@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>card</title>
+<link rel="stylesheet" href="/style.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #060907; }
+  .card { position: absolute; top: 0; left: 0; width: 1200px; height: 630px; overflow: hidden;
+    background: radial-gradient(1200px 500px at 12% -10%, #10201a 0%, #0a0f0c 55%, #070b09 100%);
+    display: grid; grid-template-columns: 470px 1fr; align-items: center; }
+  .l { padding: 0 0 0 56px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: #eaf2ec; font-weight: 700; font-size: 25px; letter-spacing: -.01em; }
+  .brand .a { color: #4fd68c; }
+  .brand svg { width: 26px; height: 26px; color: #4fd68c; }
+  h1 { color: #eaf2ec; font-size: 44px; line-height: 1.12; margin: 26px 0 0; letter-spacing: -.02em; }
+  h1 em { color: #4fd68c; font-style: normal; }
+  p { color: #9fb3a6; font-size: 20px; line-height: 1.45; margin: 18px 0 0; }
+  .u { margin-top: 30px; color: #4fd68c; font-size: 19px; }
+  .shot { position: relative; height: 630px; overflow: hidden; }
+  .shot img { position: absolute; top: 50%; left: 34px; transform: translateY(-50%);
+    width: 860px; border-radius: 12px 0 0 12px; border: 1px solid #1e2f26; border-right: 0;
+    box-shadow: -18px 22px 70px rgba(0,0,0,.55); }
+  .fade { position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(90deg, rgba(7,11,9,.92) 0%, rgba(7,11,9,0) 22%); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="l">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      <span>Pounce<span class="a">TERM</span></span>
+    </div>
+    <h1 id="h">The macOS terminal built for <em>agentic coding</em></h1>
+    <p id="s">Start Claude in any tab. You hold the gate.</p>
+    <div class="u">pounceterm.com</div>
+  </div>
+  <div class="shot"><img id="img" src="/shots/path-menu.png" alt=""><div class="fade"></div></div>
+</div>
+<script>
+  var q = new URLSearchParams(location.search);
+  if (q.get('h')) document.getElementById('h').innerHTML = q.get('h');
+  if (q.get('s')) document.getElementById('s').textContent = q.get('s');
+  if (q.get('img')) document.getElementById('img').src = '/shots/' + q.get('img');
+</script>
+</body>
+</html>
