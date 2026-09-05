@@ -44,9 +44,16 @@
   <p class="doclink">Read the docs → <a href="/docs#sftp">SFTP</a></p>
 
   </section>
-  <section class="sec-card" id="copy"><h2 class="prompt-h">Copy that just works</h2>
-  <p>Remote programs that copy via OSC 52 — a Claude login URL, a tmux or vim yank — land straight in your Mac clipboard, even through tmux. Copy-on-select is on by default, and ⌘-click opens any URL in your browser.</p>
-  <p class="doclink">Read the docs → <a href="/docs#copy-remote">Copying &amp; clickable links</a></p>
+  <section class="sec-card" id="copy"><h2 class="prompt-h">Copy, and every path is a link</h2>
+  <p>Remote programs that copy via OSC 52 — a Claude login URL, a tmux or vim yank — land straight in your Mac clipboard, even through tmux. Copy-on-select is on by default, and right-clicking away from a link copies the <b>whole selection</b> or pastes.</p>
+  <p>Anything in the output that exists on disk underlines: files, folders, extensionless things like <code>Makefile</code>, dotfiles, <code>~/</code> and relative paths alike. <b>⌘-click</b> takes the obvious action — text we can render opens the Preview tab, everything else opens in Finder — and <b>right-clicking the link</b> offers the rest: Preview here, Open with default app, Reveal in Finder, Edit in PouncePad, Copy path. Prose that merely looks like a path never underlines.</p>
+  <p class="doclink">Read the docs → <a href="/docs#copy-remote">Copying &amp; clickable links</a> · <a href="/docs#preview-tab">Preview tab</a></p>
+
+  </section>
+  <section class="sec-card" id="history"><h2 class="prompt-h">History you control</h2>
+  <p>Hover any entry in the History rail for copy and trash. Deleting tells you what will go before it goes — how many copies PounceTERM holds, how many are in your shell's history file, whether an open terminal could write it back — then removes <em>every</em> copy, rewrites the file atomically and keeps its permissions. There is deliberately no backup file; one holding the secret you just deleted would defeat the point.</p>
+  <p>Or never record it: right-click a tab → <b>Private terminal</b>. Nothing from that tab enters PounceTERM's history, including commands Claude runs there, and the shell is told to stop writing its own. Past history still works — ↑ recalls everything as before.</p>
+  <p class="doclink">Read the docs → <a href="/docs#history-privacy">Deleting history, and private terminals</a></p>
 
   </section>
   <section class="sec-card" id="themes"><h2 class="prompt-h">Themes and every font you own</h2>
@@ -68,6 +75,7 @@
   </div>
   <h2 class="prompt-h">screencapture — in the app</h2>
   <div class="frow">
+    <figure class="shot"><img src="/shots/path-menu.png" alt="A path in terminal output underlined, with the right-click menu open: Preview here, Open with default app, Reveal in Finder, Edit in PouncePad, Copy path" loading="lazy" width="1600" height="1028"><figcaption>right-click a path — preview, Finder, PouncePad, copy</figcaption></figure>
     <figure class="shot"><img src="/shots/themes.png" alt="The Themes settings page: seventeen theme preview cards from Rider Dark and Dracula to Homebrew, Retro Terminal, and Amber" loading="lazy" width="1600" height="1028"><figcaption>Themes — pick by preview, applies instantly</figcaption></figure>
     <figure class="shot"><img src="/shots/sync.png" alt="The Sync settings page: Connect to 1Password, vault choice, Share AI keys, and Push/Pull/Reset buttons" loading="lazy" width="1600" height="1028"><figcaption>Sync — your setup, pushed to 1Password</figcaption></figure>
   </div>

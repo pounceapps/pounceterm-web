@@ -30,6 +30,7 @@
 
   <h2 class="prompt-h" id="start">Start Claude anywhere</h2>
   <p>Every tab can become a Claude tab. The dialog offers all six of Claude Code's <b>permission modes</b> (manual, auto, accept edits, plan, don't ask, bypass), <b>session controls</b> (continue, the --resume picker, name it for later), an isolated <b>--worktree</b> launch for parallel agents, a <b>Profile</b> (which identity — see below), the model, extra flags, and one-click MCP connect so the new Claude can drive PounceTERM itself. A live preview shows the exact command before anything runs. On an SSH tab, the command runs on the remote host — where your shell actually is.</p>
+  <p>The pickers are <b>colour-coded</b>, and the colour means two different things on purpose: on Permissions it is <b>risk</b> — green asks, amber acts on its own within limits, red skips every check — and everywhere else it is <b>identity</b>, so a profile keeps the same colour here, in the profile list, and in the status bar. Each choice carries a line of plain guidance (what a model is good for, what "don\u2019t ask" actually does). The panel remembers how you last launched Claude — permissions, session, model, toggles, flags, profile — and deliberately forgets the session name and worktree, which would be wrong to reuse silently.</p>
   <div class="path" role="img" aria-label="How to open it: right-click any tab, choose Start Claude here, and this dialog appears">
     <span class="path-chip">right-click any tab</span>
     <span class="path-arrow">──▶</span>
@@ -38,19 +39,21 @@
     <span class="path-chip path-hi">this dialog</span>
   </div>
   <figure class="shot shot-dialog">
-    <img src="/shots/start-dialog.png" data-full="/shots/start-claude.png" alt="The Start Claude dialog up close: bypass permissions, continue last session, Connect PounceTERM MCP, chat panel, Profile and Model dropdowns, and the live command preview" loading="lazy" width="610" height="590">
+    <img src="/shots/start-dialog.png" data-full="/shots/start-claude.png" alt="The Start Claude dialog up close: Accept edits permissions in amber, New session, Connect PounceTERM MCP, the work-enterprise profile in its colour, Model, and the live command preview" loading="lazy" width="524" height="780">
     <figcaption>the Start dialog — profile, model, permissions, and the exact command it will run</figcaption>
   </figure>
+  <figure class="shot"><img src="/shots/permissions.png" alt="The Permissions picker open: Manual and Plan in green, Auto and Accept edits in amber, Bypass everything in red, each with a line of guidance" loading="lazy" width="1600" height="1028"><figcaption>colour is risk — green asks, amber acts, red skips every check</figcaption></figure>
   <p class="doclink">Read the docs → <a href="/docs#start-claude">Starting Claude in a tab</a></p>
 
   <h2 class="prompt-h" id="profiles">Claude profiles — identities per tab</h2>
   <div class="frow rev">
     <div>
       <p>A profile is an isolated Claude Code home: its own login, <b>organization choice</b>, history, and settings, in its own folder under <code>~/.claude-profiles</code>. One email can belong to a personal plan and several Enterprise orgs — make one profile per org, sign in once each, and every tab starts in exactly the identity you picked. Work-Claude and personal-Claude run <b>side by side</b>.</p>
-      <p>PounceTERM never touches credentials or the keychain; it only points Claude at a folder. The status bar reads <code>Claude · work-enterprise</code> while it runs, and the tab's right-click menu shows the live identity — verified against the actual process, not a guess.</p>
+      <p>PounceTERM never touches credentials or the keychain; it only points Claude at a folder. Every profile carries <b>its own colour</b> — one of eight, assigned when you create it and yours to change — and that colour follows it through the launch panel, the profile list and the status bar, so two identities are never confusable at a glance. The status bar reads <code>Claude · work-enterprise</code> while it runs, and the tab's right-click menu shows the live identity — verified against the actual process, not a guess.</p>
       <p class="doclink">Read the docs → <a href="/docs#claude-profiles">Claude profiles: separate accounts and orgs</a></p>
     </div>
     <figure class="shot"><img src="/shots/profiles.png" alt="Settings → Claude Profiles with its How-it-works guide: set-up steps, same email multiple organizations, good to know" loading="lazy" width="1600" height="1028"><figcaption>Settings → Claude Profiles — the guide ships in the app too</figcaption></figure>
+    <figure class="shot"><img src="/shots/profiles-list.png" alt="The Profiles tab: work-enterprise, personal and client-acme, each with its own colour swatch, Rename, Show in Finder and Remove" loading="lazy" width="1600" height="1028"><figcaption>one colour per identity — pick it, or let the app choose an unused one</figcaption></figure>
   </div>
   <p class="doclink" style="margin:18px 0 8px">watch it — two orgs, one email, running side by side:</p>
   <div data-scene="orgs"></div>
@@ -125,7 +128,7 @@
   <h2 class="prompt-h" id="preview">Read what Claude wrote — rendered</h2>
   <div class="frow">
     <div>
-      <p>Claude produces Markdown all day: plans, specs, reviews. The <b>Preview tab</b> renders it right beside the terminal that produced it — headings, tables, code, and <b>Mermaid diagrams</b> drawn. Three ways in and no file browser: <b>⌘-click the path</b> Claude just printed, press <b>⌘O</b>, or let Claude open it itself with the <code>preview_file</code> tool.</p>
+      <p>Claude produces Markdown all day: plans, specs, reviews. The <b>Preview tab</b> renders it right beside the terminal that produced it — headings, tables, code, and <b>Mermaid diagrams</b> drawn. Three ways in and no file browser: <b>⌘-click the path</b> Claude just printed, press <b>⌘O</b>, or let Claude open it itself with the <code>preview_file</code> tool. Every path Claude prints is a link — see <a href="/terminal#copy">the path menu</a> for what else you can do with one.</p>
       <p>It's read-only on purpose — PounceTERM views, PouncePad edits. But the tab watches the file, so the loop closes anyway: click <b>Open in PouncePad</b>, edit, save, and the rendered view updates itself. Same while Claude keeps writing. A Rendered ⇄ Source toggle gives you the raw text to copy.</p>
       <p class="doclink">Read the docs → <a href="/docs#preview-tab">Preview tab: a browser for Markdown</a></p>
     </div>
