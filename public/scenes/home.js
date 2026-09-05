@@ -7,10 +7,13 @@ window.PT_HOME_SCENE = {
   tabs: ['zsh-1'],
   steps: [
     { type: 'out', lines: [['dim', '# right-click this tab → Start Claude here…']], ms: 1100 },
-    { type: 'dialog', profile: 'work-enterprise', ms: 2400 },
+    {
+      type: 'dialog', profile: 'work-enterprise', perm: 'Accept edits', ms: 2600,
+      preview: '( export CLAUDE_CONFIG_DIR=~/.claude-profiles/work-enterprise ; claude --permission-mode acceptEdits )',
+    },
     {
       type: 'out', lines: [
-        ['prm', '❯ ( export CLAUDE_CONFIG_DIR=~/.claude-profiles/work-enterprise ; claude )'],
+        ['prm', '❯ ( export CLAUDE_CONFIG_DIR=~/.claude-profiles/work-enterprise ; claude --permission-mode acceptEdits )'],
       ], ms: 700,
     },
     { type: 'out', lines: [['dim', '── PounceTERM · Claude profile: work-enterprise — if asked to log in, sign in as the account/org THIS profile is for ──']], ms: 700 },
@@ -36,6 +39,17 @@ window.PT_HOME_SCENE = {
         ['grn', 'ok      demo/app/internal/retry      2.41s'],
       ], ms: 600,
     },
-    { type: 'out', lines: [['dim', '# switch away while it runs — the tab notifies you when it finishes.']], ms: 400 },
+    { type: 'out', lines: [['dim', '# switch away while it runs — the tab notifies you when it finishes.']], ms: 700 },
+    {
+      type: 'path', cls: 'dim', ms: 900,
+      pre: '\u2733 wrote ', path: 'docs/retry-plan.md', post: ' — and the notes are in docs/',
+    },
+    { type: 'out', lines: [['dim', '# every path it prints is a link. right-click one:']], ms: 500 },
+    {
+      type: 'menu', title: 'RETRY-PLAN.MD', pick: 'Preview here', ms: 1200,
+      items: ['Preview here', 'Open with default app', 'Reveal in Finder', 'Edit in PouncePad', 'Copy path'],
+    },
+    { type: 'tab', name: 'retry-plan.md' },
+    { type: 'out', lines: [['grn', '# rendered right here — Markdown and Mermaid, read-only, live-reloading']], ms: 700 },
   ],
 };

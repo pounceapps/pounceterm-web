@@ -147,6 +147,19 @@
       line(pair[0], pair[1]);
     }
 
+    // pathLine renders "…wrote docs/plan.md — …" with the path underlined the
+    // way the app underlines a path that exists on disk. The anchor is kept so
+    // a following {type:'menu'} step can hang off it.
+    var lastPath = null;
+    function pathLine(s2) {
+      var ln = line(s2.cls || null, '');
+      if (s2.pre) ln.appendChild(document.createTextNode(s2.pre));
+      lastPath = el('span', 'twin-lnk', s2.path);
+      ln.appendChild(lastPath);
+      if (s2.post) ln.appendChild(document.createTextNode(s2.post));
+      return ln;
+    }
+
     // ---- scripted scene player ----
     function runStep() {
       if (paused || !scene) return;
@@ -172,14 +185,28 @@
         var dlg = el('div', 'twin-dialog');
         var box = el('div', 'twin-dialog-box');
         box.appendChild(el('div', 'twin-dialog-h', '\u2733 Start Claude in \u201czsh-1\u201d'));
-        var rows = [['Profile', s.profile || 'Default'], ['Model', 'default']];
+        // The app's launch panel: colour is RISK on Permissions (green asks,
+        // amber acts, red skips) and IDENTITY on the rest — a profile keeps
+        // its colour here, in the list, and in the status bar.
+        var rows = [
+          ['Permissions', s.perm || 'Accept edits', 'amb', s.permHint || 'file edits run, other commands still ask'],
+          ['Session', 'New session', '', 'a fresh conversation'],
+          ['Profile', s.profile || 'Default', 'idw', 'signed in'],
+          ['Model', 'Default', '', 'whatever your plan picks'],
+        ];
         rows.forEach(function (r) {
           var row = el('div', 'twin-dialog-row');
           row.appendChild(el('span', 'twin-dialog-lbl', r[0]));
-          row.appendChild(el('span', 'twin-dialog-val', r[1] + '  \u2195'));
+          var val = el('span', 'twin-dialog-val');
+          val.appendChild(el('b', r[2] || '', r[1]));
+          if (r[3]) val.appendChild(el('i', 'twin-dialog-hint', r[3]));
+          val.appendChild(el('span', 'twin-dialog-caret', '\u2304'));
+          row.appendChild(val);
           box.appendChild(row);
         });
         box.appendChild(el('div', 'twin-dialog-chk', '\u2611 Connect PounceTERM MCP'));
+        box.appendChild(el('div', 'twin-dialog-prev', s.preview ||
+          '( export CLAUDE_CONFIG_DIR=\u2026/' + (s.profile || 'default') + ' ; claude --permission-mode acceptEdits )'));
         var foot = el('div', 'twin-dialog-foot');
         foot.appendChild(el('span', 'twin-dialog-btn', 'Cancel'));
         var go = el('span', 'twin-dialog-btn go', '\u2733 Start Claude');
@@ -192,6 +219,37 @@
           go.classList.add('press');
           timer = setTimeout(function () { dlg.remove(); runStep(); }, REDUCED ? 0 : 450);
         }, REDUCED ? 0 : (s.ms || 2200));
+      } else if (s.type === 'path') {
+        pathLine(s);
+        timer = setTimeout(runStep, REDUCED ? 0 : (s.ms || 500));
+      } else if (s.type === 'menu') {
+        // The right-click path menu, anchored under the link it belongs to.
+        var menu = el('div', 'twin-menu');
+        menu.appendChild(el('div', 'twin-menu-h', s.title || 'FILE'));
+        var picked = null;
+        (s.items || []).forEach(function (it) {
+          var mi = el('div', 'twin-menu-i', it);
+          if (it === s.pick) picked = mi;
+          menu.appendChild(mi);
+        });
+        win.style.position = 'relative';
+        win.appendChild(menu);
+        if (lastPath) {
+          var wr = win.getBoundingClientRect(), lr = lastPath.getBoundingClientRect();
+          var mw = menu.offsetWidth, mh = menu.offsetHeight;
+          var left = Math.round(lr.left - wr.left + lr.width / 2);
+          menu.style.left = Math.max(8, Math.min(left, Math.round(wr.width - mw - 8))) + 'px';
+          // Below the link when there is room, above it when there isn't —
+          // near the bottom of the window the menu would otherwise spill out.
+          var below = Math.round(lr.bottom - wr.top + 2);
+          menu.style.top = (below + mh > wr.height - 8
+            ? Math.max(8, Math.round(lr.top - wr.top - mh - 2))
+            : below) + 'px';
+        }
+        timer = setTimeout(function () {
+          if (picked) picked.classList.add('on');
+          timer = setTimeout(function () { menu.remove(); runStep(); }, REDUCED ? 0 : 700);
+        }, REDUCED ? 0 : (s.ms || 1100));
       } else if (s.type === 'pout') {
         s.lines.forEach(function (l) { paneLine(s.pane, l[0], l[1]); });
         timer = setTimeout(runStep, REDUCED ? 0 : (s.ms || 500));

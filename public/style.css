@@ -275,6 +275,22 @@ figure.shot-dialog img { box-shadow: 0 22px 70px rgba(0, 0, 0, .55); }
 .twin-dialog-row { display: flex; justify-content: space-between; gap: 18px; padding: 4px 0; color: var(--ink-mute); }
 .twin-dialog-val { background: var(--panel); border: 1px solid var(--border-hi); border-radius: 5px; padding: 1px 8px; color: var(--ink); }
 .twin-dialog-chk { color: var(--ink-dim); padding: 6px 0 2px; }
+.twin-dialog-val b { font-weight: 600; color: var(--ink); }
+.twin-dialog-val b.amb { color: var(--amber); }
+.twin-dialog-val b.idw { color: #4d96ff; }
+.twin-dialog-hint { font-style: normal; color: var(--ink-mute); margin-left: 7px; font-size: 11px; }
+.twin-dialog-caret { color: var(--ink-mute); margin-left: 8px; }
+.twin-dialog-prev { margin-top: 10px; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px;
+  color: var(--green); background: rgba(0,0,0,.25); font-size: 11px; word-break: break-all; }
+/* a path in the output, underlined the way the app underlines a real one */
+.twin-lnk { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+/* the right-click path menu */
+.twin-menu { position: absolute; z-index: 6; min-width: 178px; background: #16211a;
+  border: 1px solid var(--border-hi); border-radius: 8px; padding: 5px 0;
+  box-shadow: 0 18px 60px rgba(0,0,0,.6); font-size: 12px; }
+.twin-menu-h { color: var(--ink-mute); font-size: 10px; letter-spacing: .08em; padding: 3px 12px 6px; }
+.twin-menu-i { color: var(--ink-dim); padding: 4px 12px; }
+.twin-menu-i.on { background: rgba(79, 214, 140, .14); color: var(--green-hi); }
 .twin-dialog-foot { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
 .twin-dialog-btn { border: 1px solid var(--border-hi); border-radius: 6px; padding: 3px 12px; color: var(--ink-dim); }
 .twin-dialog-btn.go { background: #2f81f7; border-color: #2f81f7; color: #fff; transition: transform .12s, filter .12s; }
